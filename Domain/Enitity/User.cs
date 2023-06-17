@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Enitity
 {
@@ -8,6 +9,8 @@ namespace Domain.Enitity
         [Key] public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+
+        public Role Role { get; set; }
     }
 
     public class UserViewModel
@@ -18,6 +21,9 @@ namespace Domain.Enitity
         [Required]
         [MinLength(8)]
         public string Password { get; set; }
+
+        [Required]
+        public Role Role { get; set; }
     }
 }
 

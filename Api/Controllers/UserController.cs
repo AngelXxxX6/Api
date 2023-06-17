@@ -1,14 +1,14 @@
-﻿using DAL.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Domain.Enitity;
-using Service.Interfaces;
+﻿using Domain.Enitity;
 using Domain.Enum;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Service.Interfaces;
 
 namespace Api.Controllers
 {
     public class UserController : Controller
     {
+        
         private readonly IUserService _userService;
 
         public UserController(IUserService userService)
@@ -23,12 +23,12 @@ namespace Api.Controllers
 
             return View(response.Data);
         }
-
-        [Authorize(Roles = "Admin")]
+       
+        [Authorize(Roles = "MainAdmin")]
         [HttpPost]
         public async Task<IActionResult> DeleteById(int id)
         {
-           
+
             var response = await _userService.DeleteById(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
@@ -40,10 +40,10 @@ namespace Api.Controllers
         [Authorize(Roles = "Admin")]
 
         [HttpPost]
-        public async Task<IActionResult> UpdateById(int id,string login, string password)
+        public async Task<IActionResult> UpdateById(int id, string login, string password)
         {
-           var response = await _userService.UpdateById(id,new UserViewModel { Login = login, Password = password });
-            if(response.StatusCode == Domain.Enum.StatusCode.OK)
+            var response = await _userService.UpdateById(id, new UserViewModel { Login = login, Password = password });
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return RedirectToAction("GetUsers");
 
@@ -52,6 +52,6 @@ namespace Api.Controllers
 
         }
 
-       
+
     }
 }
