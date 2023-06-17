@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Enum
+﻿namespace Domain.Enum
 {
-   public enum StatusCode
+    public enum StatusCode
     {
-       OK = 200,
-       InternalServerError = 500,
-       UserNotFound = 100
+        OK = 200,
+        InternalServerError = 500,
+        UserNotFound = 100
     }
 }

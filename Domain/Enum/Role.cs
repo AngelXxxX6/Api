@@ -1,9 +1,10 @@
 ﻿namespace Domain.Enum
 {
-    public enum AdminRole
+    public enum Role
     {
         MainAdmin,
         MainDoctor,
-        MainRegistryWorker
+        MainRegistryWorker,
+        Worker
     }
 }

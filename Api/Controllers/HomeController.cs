@@ -1,18 +1,17 @@
 ﻿using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using DAL.Interfaces;
 namespace Api.Controllers
 {
     public class HomeController : Controller
     {
-      
-       
-       
+
+
+
 
         public async Task<IActionResult> Index()
         {
-            
+
             return View();
         }
 

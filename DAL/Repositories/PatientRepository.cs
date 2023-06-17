@@ -4,49 +4,50 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    public class DoctorRepository : IDoctorRepository
+    public class PatientRepository : IPatientRepository
     {
         private readonly ApplicationContext _context;
 
-        public DoctorRepository(ApplicationContext context)
+        public PatientRepository(ApplicationContext context)
         {
             _context = context;
         }
-        public async Task<bool> Create(Doctor entity)
+
+        public async Task<bool> Create(Patient entity)
         {
-            await _context.Doctors.AddAsync(entity);
+            await _context.Patients.AddAsync(entity);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> Delete(Doctor entity)
+        public async Task<bool> Delete(Patient entity)
         {
-            _context.Doctors.Remove(entity);
+            _context.Patients.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> DeleteById(int id)
         {
-            var a = _context.Doctors.Where(x => x.Id == id);
+            var a = _context.Patients.Where(x => x.Id == id);
             _context.Remove(a);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<Doctor> GetById(int id)
+        public async Task<Patient> GetById(int id)
         {
-            return await _context.Doctors.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Patients.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<Doctor>> Select()
+        public async Task<List<Patient>> Select()
         {
-            return await _context.Doctors.ToListAsync();
+            return await _context.Patients.ToListAsync();
         }
 
-        public async Task<bool> Update(Doctor entity)
+        public async Task<bool> Update(Patient entity)
         {
-            _context.Doctors.Update(entity);
+            _context.Patients.Update(entity);
             await _context.SaveChangesAsync();
             return true;
         }

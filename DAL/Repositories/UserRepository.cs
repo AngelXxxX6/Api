@@ -2,7 +2,6 @@
 using DAL.Interfaces;
 using Domain.Enitity;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 
 namespace DAL.Repositories
 {
@@ -17,36 +16,36 @@ namespace DAL.Repositories
         public async Task<bool> Create(User entity)
         {
             await _context.Users.AddAsync(entity);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> Delete(User entity)
         {
             _context.Users.Remove(entity);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> DeleteById(int id)
         {
-           
-           var a = _context.Users.Where(x => x.Id == id);
-             _context.Remove(a);
+
+            var a = _context.Users.Where(x => x.Id == id);
+            _context.Remove(a);
             await _context.SaveChangesAsync();
             return true;
 
 
         }
 
-       
+
 
         public async Task<User> GetById(int id)
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        
+
 
         public async Task<List<User>> Select()
         {

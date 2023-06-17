@@ -1,9 +1,8 @@
 ﻿using Domain.Enitity;
 
-
 namespace DAL.Interfaces
 {
-    public interface IDoctorRepository : IBaseRepository<Doctor>
+    public interface IPatientRepository : IBaseRepository<Patient>
     {
 
     }

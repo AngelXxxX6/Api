@@ -10,6 +10,6 @@ namespace Service.Interfaces
         Task<IBaseResponse<bool>> Create(UserViewModel user);
         Task<IBaseResponse<bool>> DeleteById(int id);
         Task<IBaseResponse<bool>> UpdateById(int id, UserViewModel user);
-      
+
     }
 }

@@ -3,12 +3,6 @@ using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
 using Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Implementations
 {
@@ -29,7 +23,7 @@ namespace Service.Implementations
                 var User = new User()
                 {
                     Login = user.Login,
-                    Password = user.Password, 
+                    Password = user.Password,
                 };
                 await _userRepository.Create(User);
             }
@@ -42,8 +36,8 @@ namespace Service.Implementations
                 };
 
             }
-            return baseResponse;    
-           
+            return baseResponse;
+
         }
 
         public async Task<IBaseResponse<IEnumerable<User>>> GetUsers()
@@ -52,7 +46,7 @@ namespace Service.Implementations
             try
             {
                 var users = await _userRepository.Select();
-                if(users.Count == 0)
+                if (users.Count == 0)
                 {
                     baseResponse.Description = "Найдено 0 пользователей";
                     baseResponse.StatusCode = StatusCode.OK;
@@ -84,7 +78,7 @@ namespace Service.Implementations
                     baseResponse.StatusCode = StatusCode.OK;
                     return baseResponse;
                 }
-                else 
+                else
                 { return new BaseResponse<bool>() { Description = $"[DeleteById] : {StatusCode.UserNotFound}" }; }
             }
             catch (Exception ex)
@@ -104,7 +98,7 @@ namespace Service.Implementations
             try
             {
                 var model = await _userRepository.GetById(id);
-                if(model  == null)
+                if (model == null)
                 {
                     baseResponse.Data = false;
                     baseResponse.StatusCode = StatusCode.UserNotFound;
@@ -114,7 +108,7 @@ namespace Service.Implementations
                 model.Password = user.Password;
                 if (await _userRepository.Update(model))
                 {
-                    baseResponse.StatusCode= StatusCode.OK;
+                    baseResponse.StatusCode = StatusCode.OK;
                     baseResponse.Data = true;
                     return baseResponse;
                 }
@@ -136,4 +130,4 @@ namespace Service.Implementations
         }
     }
 }
-   
+
