@@ -1,0 +1,15 @@
+D:\GitApi\DAL\bin\Debug\net6.0\DAL.deps.json
+D:\GitApi\DAL\bin\Debug\net6.0\DAL.dll
+D:\GitApi\DAL\bin\Debug\net6.0\DAL.pdb
+D:\GitApi\DAL\bin\Debug\net6.0\Domain.dll
+D:\GitApi\DAL\bin\Debug\net6.0\Domain.pdb
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.csproj.CopyComplete
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.dll
+D:\GitApi\DAL\obj\Debug\net6.0\refint\DAL.dll
+D:\GitApi\DAL\obj\Debug\net6.0\DAL.pdb
+D:\GitApi\DAL\obj\Debug\net6.0\ref\DAL.dll

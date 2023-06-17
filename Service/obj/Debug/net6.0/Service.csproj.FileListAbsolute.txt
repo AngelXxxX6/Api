@@ -1,0 +1,17 @@
+D:\GitApi\Service\bin\Debug\net6.0\Service.deps.json
+D:\GitApi\Service\bin\Debug\net6.0\Service.dll
+D:\GitApi\Service\bin\Debug\net6.0\Service.pdb
+D:\GitApi\Service\bin\Debug\net6.0\DAL.dll
+D:\GitApi\Service\bin\Debug\net6.0\Domain.dll
+D:\GitApi\Service\bin\Debug\net6.0\DAL.pdb
+D:\GitApi\Service\bin\Debug\net6.0\Domain.pdb
+D:\GitApi\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+D:\GitApi\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitApi\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+D:\GitApi\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+D:\GitApi\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+D:\GitApi\Service\obj\Debug\net6.0\Service.csproj.CopyComplete
+D:\GitApi\Service\obj\Debug\net6.0\Service.dll
+D:\GitApi\Service\obj\Debug\net6.0\refint\Service.dll
+D:\GitApi\Service\obj\Debug\net6.0\Service.pdb
+D:\GitApi\Service\obj\Debug\net6.0\ref\Service.dll
