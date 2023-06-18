@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Enitity
 {
@@ -13,5 +14,23 @@ namespace Domain.Enitity
         public string Phone { get; set; }
         public DateOnly DateBirthday { get; set; }
 
+    }
+
+    public class PatientViewModel
+    {
+        [Required]
+        [MinLength(8)]
+        public string FIO { get; set; }
+
+        [Required]
+        [MinLength(8)]
+        public string Adress { get; set; }
+
+        [Required]
+        [MinLength(6)]
+        public string Phone { get; set; }
+
+        [Required]
+        public DateOnly DateBirthday { get; set; }
     }
 }

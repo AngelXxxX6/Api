@@ -1,4 +1,5 @@
 ﻿using DAL.Interfaces;
+using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
@@ -6,65 +7,64 @@ using Service.Interfaces;
 
 namespace Service.Implementations
 {
-    public class UserService : IUserService
+    public class PatientService : IPatientService
     {
-        private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        private readonly IPatientRepository _patientRepository;
+        public PatientService(IPatientRepository patientRepository)
         {
-            _userRepository = userRepository;
+            _patientRepository = patientRepository;
         }
 
 
-        public async Task<IBaseResponse<bool>> Create(UserViewModel user)
+        public async Task<IBaseResponse<IEnumerable<Patient>>> GetPatients()
         {
-            var baseResponse = new BaseResponse<bool>();
+            var baseResponse = new BaseResponse<IEnumerable<Patient>>();
             try
             {
-                var User = new User()
-                {
-                    Login = user.Login,
-                    Password = user.Password,
-                };
-                await _userRepository.Create(User);
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[GetUsers] : {ex.Message}",
-                    StatusCode = StatusCode.InternalServerError,
-                };
-
-            }
-            return baseResponse;
-
-        }
-
-        public async Task<IBaseResponse<IEnumerable<User>>> GetUsers()
-        {
-            var baseResponse = new BaseResponse<IEnumerable<User>>();
-            try
-            {
-                var users = await _userRepository.Select();
-                if (users.Count == 0)
+                var patients = await _patientRepository.Select();
+                if (patients.Count == 0)
                 {
                     baseResponse.Description = "Найдено 0 пользователей";
                     baseResponse.StatusCode = StatusCode.OK;
                     return baseResponse;
                 }
 
-                baseResponse.Data = users;
+                baseResponse.Data = patients;
                 baseResponse.StatusCode = StatusCode.OK;
                 return baseResponse;
 
             }
             catch (Exception ex)
             {
-                return new BaseResponse<IEnumerable<User>>()
+                return new BaseResponse<IEnumerable<Patient>>()
                 {
-                    Description = $"[GetUsers] : {ex.Message}"
+                    Description = $"[GetPatients] : {ex.Message}"
                 };
             }
+        }
+
+        public async Task<IBaseResponse<bool>> Create(PatientViewModel patient)
+        {
+            var baseResponse = new BaseResponse<bool>();
+            try
+            {
+                var Patient = new Patient()
+                {
+                    FIO = patient.FIO,
+                    Adress = patient.Adress,
+                    Phone = patient.Phone,
+                    DateBirthday = patient.DateBirthday,
+                };
+                await _patientRepository.Create(Patient);
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[Create] : {ex.Message}"
+                };
+            }
+            return baseResponse;
         }
 
         public async Task<IBaseResponse<bool>> DeleteById(int id)
@@ -72,17 +72,17 @@ namespace Service.Implementations
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                if (await _userRepository.DeleteById(id))
+                if (await _patientRepository.DeleteById(id))
                 {
                     baseResponse.Data = true;
                     baseResponse.StatusCode = StatusCode.OK;
                     return baseResponse;
                 }
                 else
-                {
+                { 
                     return new BaseResponse<bool>() 
                     { 
-                        Description = $"[DeleteById] : {StatusCode.UserNotFound}"
+                        Description = $"[DeleteById] : {StatusCode.UserNotFound}" 
                     }; 
                 }
             }
@@ -93,24 +93,25 @@ namespace Service.Implementations
                     Description = $"[DeleteById] : {ex.Message}"
                 };
             }
-
         }
 
-        public async Task<IBaseResponse<bool>> UpdateById(int id, UserViewModel user)
+        public async Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                var model = await _userRepository.GetById(id);
+                var model = await _patientRepository.GetById(id);
                 if (model == null)
                 {
                     baseResponse.Data = false;
                     baseResponse.StatusCode = StatusCode.UserNotFound;
                     return baseResponse;
                 }
-                model.Login = user.Login;
-                model.Password = user.Password;
-                if (await _userRepository.Update(model))
+                model.FIO = patient.FIO;
+                model.Adress = patient.Adress;
+                model.Phone = patient.Phone;
+                model.DateBirthday = patient.DateBirthday;
+                if (await _patientRepository.Update(model))
                 {
                     baseResponse.StatusCode = StatusCode.OK;
                     baseResponse.Data = true;
@@ -133,4 +134,3 @@ namespace Service.Implementations
         }
     }
 }
-
