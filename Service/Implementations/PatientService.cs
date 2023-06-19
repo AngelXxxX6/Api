@@ -21,8 +21,8 @@ namespace Service.Implementations
             var baseResponse = new BaseResponse<IEnumerable<Patient>>();
             try
             {
-                var patients = await _patientRepository.Select();
-                if (patients.Count == 0)
+                var patients =  _patientRepository.Select().ToList();
+                if (patients.Count() == 0)
                 {
                     baseResponse.Description = "Найдено 0 пользователей";
                     baseResponse.StatusCode = StatusCode.OK;
@@ -100,7 +100,8 @@ namespace Service.Implementations
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                var model = await _patientRepository.GetById(id);
+               
+                var model = _patientRepository.Select().Where(x=> x.Id == id).FirstOrDefault();
                 if (model == null)
                 {
                     baseResponse.Data = false;

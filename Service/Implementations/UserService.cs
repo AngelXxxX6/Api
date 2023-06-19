@@ -3,6 +3,7 @@ using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
 using Service.Interfaces;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Service.Implementations
 {
@@ -40,13 +41,14 @@ namespace Service.Implementations
 
         }
 
-        public async Task<IBaseResponse<IEnumerable<User>>> GetUsers()
+        public async Task<IBaseResponse<List<User>>> GetUsers()
         {
-            var baseResponse = new BaseResponse<IEnumerable<User>>();
+            var baseResponse = new BaseResponse<List<User>>();
             try
             {
-                var users = await _userRepository.Select();
-                if (users.Count == 0)
+                var users = _userRepository.Select().ToList();
+              
+                if (!users.Any())
                 {
                     baseResponse.Description = "Найдено 0 пользователей";
                     baseResponse.StatusCode = StatusCode.OK;
@@ -60,7 +62,7 @@ namespace Service.Implementations
             }
             catch (Exception ex)
             {
-                return new BaseResponse<IEnumerable<User>>()
+                return new BaseResponse<List<User>>()
                 {
                     Description = $"[GetUsers] : {ex.Message}"
                 };
@@ -101,7 +103,8 @@ namespace Service.Implementations
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                var model = await _userRepository.GetById(id);
+               
+                var model = _userRepository.Select().Where(x=>x.Id == id).FirstOrDefault();
                 if (model == null)
                 {
                     baseResponse.Data = false;
@@ -126,6 +129,36 @@ namespace Service.Implementations
             catch (Exception ex)
             {
                 return new BaseResponse<bool>()
+                {
+                    Description = $"[UpdateById] : {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<User>> GetById(int id)
+        {
+            var baseResponse = new BaseResponse<User>();
+            try
+            {
+               
+                User user = _userRepository.Select().Where(x=>x.Id == id).FirstOrDefault();
+                if(user!=null)
+                {
+                    baseResponse.Data = user;
+                    baseResponse.StatusCode = StatusCode.OK;
+                    return baseResponse;
+                }
+                else
+                {
+                    
+                    baseResponse.StatusCode = StatusCode.UserNotFound;
+                    return baseResponse;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return new BaseResponse<User>()
                 {
                     Description = $"[UpdateById] : {ex.Message}"
                 };
