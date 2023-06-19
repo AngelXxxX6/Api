@@ -14,6 +14,7 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(co
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 
 builder.Services.AddScoped<IAccountService, AccountService>();
