@@ -35,14 +35,10 @@ namespace DAL.Repositories
             return true;
         }
 
-        public async Task<Patient> GetById(int id)
+       
+        public IQueryable<Patient> Select()
         {
-            return await _context.Patients.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task<List<Patient>> Select()
-        {
-            return await _context.Patients.ToListAsync();
+            return _context.Patients;
         }
 
         public async Task<bool> Update(Patient entity)

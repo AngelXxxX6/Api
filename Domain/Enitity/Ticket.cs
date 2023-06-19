@@ -10,4 +10,14 @@ namespace Domain.Enitity
         public DateTime DateTimeTicket { get; set; }
     }
 
+    public class TicketViewModel
+    {
+        [Required]
+        public string PatientFIO { get; set; }
+        [Required]
+        public string DoctorFIO { get; set; }
+        [Required]
+        public DateTime DateTimeTicket { get; set; }
+    }
+
 }

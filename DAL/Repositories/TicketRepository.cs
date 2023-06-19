@@ -41,14 +41,11 @@ namespace DAL.Repositories
             return true;
         }
 
-        public async Task<Ticket> GetById(int id)
-        {
-            return await _context.Tickets.FirstOrDefaultAsync(x => x.Id == id);
-        }
+        
 
-        public async Task<List<Ticket>> Select()
+        public IQueryable<Ticket> Select()
         {
-            return await _context.Tickets.ToListAsync();
+            return _context.Tickets;
         }
 
         public async Task<bool> Update(Ticket entity)

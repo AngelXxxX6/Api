@@ -38,18 +38,9 @@ namespace DAL.Repositories
 
         }
 
-
-
-        public async Task<User> GetById(int id)
+        public IQueryable<User> Select()
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-
-
-        public async Task<List<User>> Select()
-        {
-            return await _context.Users.ToListAsync();
+            return _context.Users;
         }
 
         public async Task<bool> Update(User entity)
