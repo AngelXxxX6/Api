@@ -18,7 +18,7 @@ namespace Domain.Enitity
     public class DoctorViewModel
     {
         [Required]
-        
+        [MinLength(8)]
         public string FIO { get; set; }
 
         [Required]
@@ -27,11 +27,11 @@ namespace Domain.Enitity
 
         [Required]
        
-        public string RoomNumber { get; set; }
+        public int RoomNumber { get; set; }
 
         [Required]
-        public DateOnly WorkTimeStart { get; set; }
+        public TimeOnly WorkTimeStart { get; set; }
         [Required]
-        public DateOnly WorkTimeEnd { get; set; }
+        public TimeOnly WorkTimeEnd { get; set; }
     }
 }
