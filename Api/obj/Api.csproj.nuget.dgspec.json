@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitApi\\Api\\Api.csproj": {}
+    "D:\\Git_Rep\\Api\\Api\\Api.csproj": {}
   },
   "projects": {
-    "D:\\GitApi\\Api\\Api.csproj": {
+    "D:\\Git_Rep\\Api\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitApi\\Api\\Api.csproj",
+        "projectUniqueName": "D:\\Git_Rep\\Api\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "D:\\GitApi\\Api\\Api.csproj",
-        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
-        "outputPath": "D:\\GitApi\\Api\\obj\\",
+        "projectPath": "D:\\Git_Rep\\Api\\Api\\Api.csproj",
+        "packagesPath": "C:\\Users\\dashc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git_Rep\\Api\\Api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dashc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,17 +26,19 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitApi\\DAL\\DAL.csproj": {
-                "projectPath": "D:\\GitApi\\DAL\\DAL.csproj"
+              "D:\\Git_Rep\\Api\\DAL\\DAL.csproj": {
+                "projectPath": "D:\\Git_Rep\\Api\\DAL\\DAL.csproj"
               },
-              "D:\\GitApi\\Service\\Service.csproj": {
-                "projectPath": "D:\\GitApi\\Service\\Service.csproj"
+              "D:\\Git_Rep\\Api\\Service\\Service.csproj": {
+                "projectPath": "D:\\Git_Rep\\Api\\Service\\Service.csproj"
               }
             }
           }
@@ -75,21 +81,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitApi\\DAL\\DAL.csproj": {
+    "D:\\Git_Rep\\Api\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitApi\\DAL\\DAL.csproj",
+        "projectUniqueName": "D:\\Git_Rep\\Api\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "D:\\GitApi\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
-        "outputPath": "D:\\GitApi\\DAL\\obj\\",
+        "projectPath": "D:\\Git_Rep\\Api\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\dashc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git_Rep\\Api\\DAL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dashc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,14 +107,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitApi\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\GitApi\\Domain\\Domain.csproj"
+              "D:\\Git_Rep\\Api\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -140,21 +151,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitApi\\Domain\\Domain.csproj": {
+    "D:\\Git_Rep\\Api\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitApi\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\GitApi\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
-        "outputPath": "D:\\GitApi\\Domain\\obj\\",
+        "projectPath": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\dashc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git_Rep\\Api\\Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dashc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -162,6 +177,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -195,21 +211,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitApi\\Service\\Service.csproj": {
+    "D:\\Git_Rep\\Api\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitApi\\Service\\Service.csproj",
+        "projectUniqueName": "D:\\Git_Rep\\Api\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "D:\\GitApi\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
-        "outputPath": "D:\\GitApi\\Service\\obj\\",
+        "projectPath": "D:\\Git_Rep\\Api\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\dashc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git_Rep\\Api\\Service\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dashc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -217,17 +237,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitApi\\DAL\\DAL.csproj": {
-                "projectPath": "D:\\GitApi\\DAL\\DAL.csproj"
+              "D:\\Git_Rep\\Api\\DAL\\DAL.csproj": {
+                "projectPath": "D:\\Git_Rep\\Api\\DAL\\DAL.csproj"
               },
-              "D:\\GitApi\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\GitApi\\Domain\\Domain.csproj"
+              "D:\\Git_Rep\\Api\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -257,7 +278,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
