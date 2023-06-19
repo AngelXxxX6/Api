@@ -1,0 +1,30 @@
+﻿﻿
+@model Domain.Enitity.AccountViewsModel.RegisterViewModel;
+
+@{
+    Layout = null;
+    ViewBag.Title = "Регистрация";
+}
+
+<form asp-controller="Account" asp-action="Register">
+    <div asp-validation-summary="All" ></div>
+    <div >
+        <input asp-for="Login"  placeholder="Логин" type="text">
+    </div>
+    <div >
+        <input autocomplete="new-password" asp-for="Password" placeholder="Пароль"  type="password">
+    </div>
+    <span >Пароль должен быть длиной больше 6 символов и иметь только латинские символы</span>
+    <div >
+        <input autocomplete="new-password" asp-for="PasswordConfirm" placeholder="Подтвердите пароль"  type="password">
+    </div>
+    <div>
+       <select asp-for="UserRole" >
+           <option selected value="0">Работник регистратуры</option>
+            <option selected value="1">Главный администратор</option>
+            <option selected value="2">Администртор учётных записей</option>
+            <option selected value="3">Главный врач</option>
+       </select>
+    </div>
+    <button  type="submit">Добавить пользователя</button>
+</form>

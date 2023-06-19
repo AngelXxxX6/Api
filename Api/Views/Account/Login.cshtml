@@ -1,0 +1,19 @@
+﻿@model Domain.Enitity.AccountViewsModel.RegisterViewModel;
+
+@{
+    Layout = null;
+    ViewBag.Title = "Регистрация";
+}
+
+<form asp-controller="Account" asp-action="Login">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <input asp-for="Login" placeholder="Логин" type="text">
+    </div>
+    <div>
+        <input autocomplete="password" asp-for="Password" placeholder="Пароль" type="password">
+    </div>
+   
+   
+    <button type="submit">Войти</button>
+</form>

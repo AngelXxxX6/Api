@@ -5,7 +5,6 @@ namespace DAL.Interfaces
     {
         Task<bool> Create(T entity);
        
-
         IQueryable<T> Select();
 
         Task<bool> Delete(T entity);

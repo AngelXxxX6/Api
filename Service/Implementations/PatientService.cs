@@ -101,7 +101,8 @@ namespace Service.Implementations
             try
             {
                
-                var model = _patientRepository.Select().Where(x=> x.Id == id).FirstOrDefault();
+                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+               
                 if (model == null)
                 {
                     baseResponse.Data = false;
