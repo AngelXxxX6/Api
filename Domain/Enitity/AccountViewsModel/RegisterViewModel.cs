@@ -18,6 +18,7 @@ namespace Domain.Enitity.AccountViewsModel
 
         [Required(ErrorMessage = "Введите пароль")]
         [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Пароль должен иметь длину больше 6 символов")]
 
         public string Password { get; set; }
 

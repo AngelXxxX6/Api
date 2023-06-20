@@ -9,16 +9,7 @@
 
     @if(User.Identity.IsAuthenticated)
     {
-        <p>Авторизирован @if(User.IsInRole(Role.MainDoctor.ToString()))
-
-            {
-                <span>Роль - администратор</span>
-            }
-            else if(User.IsInRole(Role.Worker.ToString()))
-            {
-                <span>Роль - работник</span>
-            }
-        </p>
+        
         <form method="post" asp-controller="Account" asp-action="Logout">
             <input  type="submit" value="Выход" />
         </form>

@@ -2,10 +2,13 @@
 {
     public enum Role
     {
+        MainAdmin,
+        MainRegistryWorker,
+        MainDoctor,
         Worker,
         
-        MainDoctor,
-        MainRegistryWorker,
-        MainAdmin,
+        
+        
+        
     }
 }

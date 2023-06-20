@@ -6,6 +6,7 @@ using Domain.Enum;
 using Domain.Helpers;
 using Domain.Response;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using Service.Interfaces;
 using System;
@@ -66,6 +67,7 @@ namespace Service.Implementations
 
         public async Task<BaseResponse<bool>> Register(RegisterViewModel model)
         {
+            
             try
             {
                 var user = await  _userRepository.Select().FirstOrDefaultAsync(x => x.Login == model.Login);
