@@ -14,16 +14,30 @@
     <div >
         <input autocomplete="new-password" asp-for="Password" placeholder="Пароль"  type="password">
     </div>
-    <span >Пароль должен быть длиной больше 6 символов и иметь только латинские символы</span>
+    
     <div >
         <input autocomplete="new-password" asp-for="PasswordConfirm" placeholder="Подтвердите пароль"  type="password">
     </div>
     <div>
        <select asp-for="UserRole" >
-           <option selected value="0">Работник регистратуры</option>
-            <option selected value="1">Главный администратор</option>
-            <option selected value="2">Администртор учётных записей</option>
-            <option selected value="3">Главный врач</option>
+           @if(User.IsInRole("MainAdmin"))
+            {
+                <option selected value="0">Главный администратор</option>
+                <option value="1">Администртор учётных записей</option>
+                <option  value="2">Главный врач</option>
+                <option  value="3">Работник регистратуры</option>
+            }
+            @if (User.IsInRole("MainDoctor"))
+            {
+               <option selected value="2">Главный врач</option>
+            }
+            @if (User.IsInRole("MainRegistryWorker"))
+            {
+           <option selected value="3">Работник регистратуры</option>
+            }
+            
+            
+           
        </select>
     </div>
     <button  type="submit">Добавить пользователя</button>

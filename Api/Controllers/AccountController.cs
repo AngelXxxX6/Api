@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Domain.Enum;
 
 namespace Api.Controllers
 {
@@ -16,10 +18,15 @@ namespace Api.Controllers
         {
             _accountService = accountService;
         }
+
+        
         [HttpGet]
+        [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
+            
         public IActionResult Registration() => View();
 
         [HttpPost]
+        [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -35,9 +42,11 @@ namespace Api.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login() => View();
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -56,6 +65,7 @@ namespace Api.Controllers
         }
 
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
