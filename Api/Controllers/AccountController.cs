@@ -72,4 +72,41 @@ namespace Api.Controllers
             return RedirectToAction("Index", "Home");
         }
     }
+
+    public class PatientsController : Controller
+    {
+        [HttpGet]
+        [Authorize(Roles = "MainRegistryWorker, MainAdmin")]
+        public IActionResult Index()
+        {
+            return View("~/Views/Home/Patients.cshtml");
+         
+        }
+    }
+
+    public class DoctorsController : Controller
+    {
+        [HttpGet]
+        [Authorize(Roles = "MainRegistryWorker, MainAdmin")]
+        public IActionResult Index()
+        {
+            // Логика обработки страницы Doctors
+            return View("~/Views/Home/Doctors.cshtml");
+        }
+    }
+
+    public class TicketController : Controller
+    {
+        [HttpGet]
+        [Authorize(Roles = "MainRegistryWorker, MainAdmin")]
+        public IActionResult Index()
+        {
+            // Логика обработки страницы Ticket
+            return View("~/Views/Home/Ticket.cshtml");
+        }
+    }
+
+
+
+
 }

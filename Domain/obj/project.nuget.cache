@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8NaQvPg4NygL8QnpgpdgeQpqsh6A5QDWVsFVWZJcO9u5BFYkzOq7zUq2uIfVCwIB8mwqV8l7BdO4u8OfXWaVDg==",
+  "dgSpecHash": "+GnQTeXfNIep+d3aQJi/FuWPqls2rusBTYm7SBcuEbW7V6qWnwoOhSUFdKwjpvrLAx1n4SsanlSm8kU+d37zLA==",
   "success": true,
-  "projectFilePath": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

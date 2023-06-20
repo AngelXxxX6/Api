@@ -49,3 +49,20 @@ D:\Git_Rep\Api\Service\obj\Debug\net6.0\Service.dll
 D:\Git_Rep\Api\Service\obj\Debug\net6.0\refint\Service.dll
 D:\Git_Rep\Api\Service\obj\Debug\net6.0\Service.pdb
 D:\Git_Rep\Api\Service\obj\Debug\net6.0\ref\Service.dll
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\Service.deps.json
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\Service.dll
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\Service.pdb
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\DAL.dll
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\Domain.dll
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\DAL.pdb
+D:\Course .Net\API\Api\Service\bin\Debug\net6.0\Domain.pdb
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.csproj.CopyComplete
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.dll
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\refint\Service.dll
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\Service.pdb
+D:\Course .Net\API\Api\Service\obj\Debug\net6.0\ref\Service.dll

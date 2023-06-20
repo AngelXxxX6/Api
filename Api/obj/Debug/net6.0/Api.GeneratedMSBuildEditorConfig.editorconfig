@@ -5,53 +5,64 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Api
 build_property.RootNamespace = Api
-build_property.ProjectDir = D:\Git_Rep\Api\Api\
+build_property.ProjectDir = D:\Course .Net\API\Api\Api\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Git_Rep\Api\Api
+build_property.MSBuildProjectDirectory = D:\Course .Net\API\Api\Api
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Git_Rep/Api/Api/Views/Account/Login.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/Account/Registration.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Account/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/Home/Index.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Home/Doctors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEb2N0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Course .Net/API/Api/Api/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/Home/Privacy.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Home/Patients.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXRpZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Course .Net/API/Api/Api/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/Shared/Error.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Home/Ticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUaWNrZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Course .Net/API/Api/Api/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/User/GetUsers.cshtml]
+[D:/Course .Net/API/Api/Api/Views/User/GetUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxHZXRVc2Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/_ViewImports.cshtml]
+[D:/Course .Net/API/Api/Api/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/_ViewStart.cshtml]
+[D:/Course .Net/API/Api/Api/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git_Rep/Api/Api/Views/Shared/_Layout.cshtml]
+[D:/Course .Net/API/Api/Api/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qv8w6lonih
