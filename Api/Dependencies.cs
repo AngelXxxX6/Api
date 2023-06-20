@@ -13,6 +13,7 @@ namespace Api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<ITicketService, TicketService>();
         }
         public static void InititalizationRepostitories(this IServiceCollection services)
         {
