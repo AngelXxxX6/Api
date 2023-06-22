@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Api.Controllers
 {
@@ -33,7 +32,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Main, MainDoctor, Worker")]
-        [Route("/Patient/Delete")]
+        [Route("Patient/Delete")]
         public async Task<bool> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);

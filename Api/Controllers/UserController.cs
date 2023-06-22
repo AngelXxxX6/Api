@@ -1,7 +1,6 @@
 ﻿using Domain.Enitity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Implementations;
 using Service.Interfaces;
 
 namespace Api.Controllers
@@ -18,7 +17,7 @@ namespace Api.Controllers
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpGet]
-        [Route("/Patient/GetUsers")]
+        [Route("User/GetUsers")]
         public async Task<IEnumerable<User>> GetUsers()
         {
             var response = await _userService.GetUsers();
@@ -28,7 +27,7 @@ namespace Api.Controllers
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpPost]
-        [Route("/Patient/DeleteById")]
+        [Route("User/DeleteById")]
         public async Task<bool> DeleteById(int id)
         {
 
@@ -40,18 +39,18 @@ namespace Api.Controllers
             return false; ;
         }
 
-        [Authorize(Roles = "MainAdmni, MainRegistryWorker")]
-        [Route("/Patient/UpdateById")]
+        [Authorize(Roles = "MainAdmnim, MainRegistryWorker")]
+        [Route("User/UpdateById")]
         [HttpPost]
-        public async Task<IActionResult> UpdateById(int id,UserViewModel model)
+        public async Task<bool> UpdateById(int id, UserViewModel model)
         {
             var response = await _userService.UpdateById(id, model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetUsers");
+                return true;
 
             }
-            return RedirectToAction("Error");
+            return false;
 
         }
 

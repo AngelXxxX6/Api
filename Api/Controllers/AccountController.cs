@@ -1,9 +1,8 @@
 ﻿using Domain.Enitity.AccountViewsModel;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Implementations;
 using Service.Interfaces;
 using System.Security.Claims;
 
@@ -17,7 +16,7 @@ namespace Api.Controllers
         {
             _accountService = accountService;
         }
-        
+
 
         [HttpPost]
         [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
@@ -31,12 +30,11 @@ namespace Api.Controllers
                 {
                     return true;
                 }
-                ModelState.AddModelError("", response.Description);
             }
             return false;
         }
 
-        
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -58,7 +56,7 @@ namespace Api.Controllers
             return false;
         }
 
-        [ValidateAntiForgeryToken]
+
         [Authorize]
         [Route("/Account/Logout")]
         [HttpGet]

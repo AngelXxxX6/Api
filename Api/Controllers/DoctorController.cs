@@ -1,6 +1,5 @@
 ﻿using Domain.Enitity;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Collections;
