@@ -1,31 +1,56 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "DateOnlyTimeOnly.AspNet/2.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/DateOnlyTimeOnly.AspNet.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/DateOnlyTimeOnly.AspNet.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DateOnlyTimeOnly.AspNet/2.1.1": {
+      "sha512": "7HlGV6sm0efRMquxnZaoqV3KybUMOs1IaJ4TaX85v7IZF01h1YV6Zscos9g4qQfrGYfvqLjbpe3Q54cmMBeISQ==",
+      "type": "package",
+      "path": "dateonlytimeonly.aspnet/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "dateonlytimeonly.aspnet.2.1.1.nupkg.sha512",
+        "dateonlytimeonly.aspnet.nuspec",
+        "lib/net6.0/DateOnlyTimeOnly.AspNet.dll",
+        "lib/net7.0/DateOnlyTimeOnly.AspNet.dll"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "DateOnlyTimeOnly.AspNet >= 2.1.1"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\dashc\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\New\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\dashc\\.nuget\\packages\\",
-      "outputPath": "D:\\Git_Rep\\Api\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\dashc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +58,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -51,6 +75,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "DateOnlyTimeOnly.AspNet": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -67,7 +97,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

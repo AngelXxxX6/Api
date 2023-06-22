@@ -3,6 +3,7 @@ using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
+using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 
 namespace Service.Implementations
@@ -15,7 +16,7 @@ namespace Service.Implementations
             _patientRepository = patientRepository;
         }
 
-
+       
         public async Task<IBaseResponse<IEnumerable<Patient>>> GetPatients()
         {
             var baseResponse = new BaseResponse<IEnumerable<Patient>>();
@@ -42,7 +43,7 @@ namespace Service.Implementations
                 };
             }
         }
-
+       
         public async Task<IBaseResponse<bool>> Create(PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -66,13 +67,14 @@ namespace Service.Implementations
             }
             return baseResponse;
         }
-
+       
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                if (await _patientRepository.DeleteById(id))
+                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+                if (await _patientRepository.Delete(model))
                 {
                     baseResponse.Data = true;
                     baseResponse.StatusCode = StatusCode.OK;
@@ -94,7 +96,7 @@ namespace Service.Implementations
                 };
             }
         }
-
+       
         public async Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();

@@ -1,53 +1,45 @@
 ﻿using Domain.Enitity.AccountViewsModel;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using Service.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Domain.Enum;
+using Microsoft.AspNetCore.Mvc;
+using Service.Interfaces;
+using System.Security.Claims;
 
 namespace Api.Controllers
 {
-    public class AccountController : Controller
+    [ApiController]
+    public class AccountController : ControllerBase
     {
-
         private readonly IAccountService _accountService;
-
         public AccountController(IAccountService accountService)
         {
             _accountService = accountService;
         }
 
-        
-        [HttpGet]
-        [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
-            
-        public IActionResult Registration() => View();
 
         [HttpPost]
         [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        [Route("/Account/Register")]
+        public async Task<bool> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Register(model);
                 if (response.StatusCode == Domain.Enum.StatusCode.OK)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return true;
                 }
-                ModelState.AddModelError("", response.Description);
             }
-            return View("Registration");
+            return false;
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Login() => View();
+
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        [Route("/Account/Login")]
+        public async Task<bool> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -57,19 +49,21 @@ namespace Api.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(response.Data));
 
-                    return RedirectToAction("Index", "Home");
+                    return true;
                 }
                 ModelState.AddModelError("", response.Description);
             }
-            return View("Login");
+            return false;
         }
 
-        [ValidateAntiForgeryToken]
+
         [Authorize]
-        public async Task<IActionResult> Logout()
+        [Route("/Account/Logout")]
+        [HttpGet]
+        public async Task<bool> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return true;
         }
     }
 }

@@ -26,14 +26,7 @@ namespace DAL.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteById(int id)
-        {
-            var a = _context.Doctors.Where(x => x.Id == id);
-            _context.Remove(a);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
+       
         
 
         public IQueryable<Doctor> Select()

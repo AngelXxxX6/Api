@@ -43,3 +43,18 @@ D:\Git_Rep\Api\DAL\obj\Debug\net6.0\DAL.dll
 D:\Git_Rep\Api\DAL\obj\Debug\net6.0\refint\DAL.dll
 D:\Git_Rep\Api\DAL\obj\Debug\net6.0\DAL.pdb
 D:\Git_Rep\Api\DAL\obj\Debug\net6.0\ref\DAL.dll
+D:\Course .Net\API\Api\DAL\bin\Debug\net6.0\DAL.deps.json
+D:\Course .Net\API\Api\DAL\bin\Debug\net6.0\DAL.dll
+D:\Course .Net\API\Api\DAL\bin\Debug\net6.0\DAL.pdb
+D:\Course .Net\API\Api\DAL\bin\Debug\net6.0\Domain.dll
+D:\Course .Net\API\Api\DAL\bin\Debug\net6.0\Domain.pdb
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.csproj.CopyComplete
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.dll
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\refint\DAL.dll
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\DAL.pdb
+D:\Course .Net\API\Api\DAL\obj\Debug\net6.0\ref\DAL.dll

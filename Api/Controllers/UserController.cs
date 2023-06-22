@@ -1,57 +1,58 @@
 ﻿using Domain.Enitity;
-using Domain.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 
 namespace Api.Controllers
 {
-    public class UserController : Controller
+    [ApiController]
+    public class UserController : ControllerBase
     {
-        
-        private readonly IUserService _userService;
 
+        private readonly IUserService _userService;
         public UserController(IUserService userService)
         {
             _userService = userService;
         }
 
-
-        public async Task<IActionResult> GetUsers()
+        [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
+        [HttpGet]
+        [Route("User/GetUsers")]
+        public async Task<IEnumerable<User>> GetUsers()
         {
             var response = await _userService.GetUsers();
 
-            return View(response.Data);
+            return response.Data;
         }
-       
-        [Authorize(Roles = "MainAdmin")]
+
+        [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpPost]
-        public async Task<IActionResult> DeleteById(int id)
+        [Route("User/DeleteById")]
+        public async Task<bool> DeleteById(int id)
         {
 
             var response = await _userService.DeleteById(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetUsers");
+                return true;
             }
-            return RedirectToAction("Error");
+            return false; ;
         }
 
-        [Authorize(Roles = "Admin")]
-
+        [Authorize(Roles = "MainAdmnim, MainRegistryWorker")]
+        [Route("User/UpdateById")]
         [HttpPost]
-        public async Task<IActionResult> UpdateById(int id, string login, string password)
+        public async Task<bool> UpdateById(int id, UserViewModel model)
         {
-            var response = await _userService.UpdateById(id, new UserViewModel { Login = login, Password = password });
+            var response = await _userService.UpdateById(id, model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetUsers");
+                return true;
 
             }
-            return RedirectToAction("Error");
+            return false;
 
         }
-
 
     }
 }
