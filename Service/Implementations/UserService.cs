@@ -1,4 +1,5 @@
 ﻿using DAL.Interfaces;
+using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
@@ -96,7 +97,8 @@ namespace Service.Implementations
             {
                 if (id != 0)
                 {
-                    if (await _userRepository.DeleteById(id))
+                    var model = _userRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+                    if (await _userRepository.Delete(model))
                     {
                         baseResponse.Data = true;
                         baseResponse.StatusCode = StatusCode.OK;

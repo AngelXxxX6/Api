@@ -73,7 +73,8 @@ namespace Service.Implementations
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                if (await _patientRepository.Delete(id))
+                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+                if (await _patientRepository.Delete(model))
                 {
                     baseResponse.Data = true;
                     baseResponse.StatusCode = StatusCode.OK;

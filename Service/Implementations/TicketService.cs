@@ -74,7 +74,8 @@ namespace Service.Implementations
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                if (await _ticketRepository.DeleteById(id))
+                var model = _ticketRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+                if (await _ticketRepository.Delete(model))
                 {
                     baseResponse.Data = true;
                     baseResponse.StatusCode = StatusCode.OK;
