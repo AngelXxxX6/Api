@@ -18,7 +18,7 @@ namespace Domain.Enitity
     public class DoctorViewModel
     {
         [Required]
-        [MinLength(8)]
+        [MinLength(4)]
         public string FIO { get; set; }
 
         [Required]

@@ -7,8 +7,19 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "Domain/1.0.0": {
+        "dependencies": {
+          "DateOnlyTimeOnly.AspNet": "2.1.1"
+        },
         "runtime": {
           "Domain.dll": {}
+        }
+      },
+      "DateOnlyTimeOnly.AspNet/2.1.1": {
+        "runtime": {
+          "lib/net6.0/DateOnlyTimeOnly.AspNet.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.0"
+          }
         }
       }
     }
@@ -18,6 +29,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DateOnlyTimeOnly.AspNet/2.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7HlGV6sm0efRMquxnZaoqV3KybUMOs1IaJ4TaX85v7IZF01h1YV6Zscos9g4qQfrGYfvqLjbpe3Q54cmMBeISQ==",
+      "path": "dateonlytimeonly.aspnet/2.1.1",
+      "hashPath": "dateonlytimeonly.aspnet.2.1.1.nupkg.sha512"
     }
   }
 }

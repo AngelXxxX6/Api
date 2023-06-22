@@ -1,4 +1,5 @@
 ﻿using Domain.Enitity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
@@ -18,6 +19,7 @@ namespace Api.Controllers
 
         [HttpGet]
         [Route("Ticket/GetTickets")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<IEnumerable> GetTickets()
         {
             var response = await _service.GetTickets();
@@ -31,6 +33,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("Ticket/DeleteById")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);
@@ -43,6 +46,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("Ticket/Create")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> Create(TicketViewModel model)
         {
             var response = await _service.Create(model);
@@ -55,6 +59,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("Ticket/UpdateById")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> UpdateById(int id, TicketViewModel model)
         {
             var response = await _service.UpdateById(id, model);

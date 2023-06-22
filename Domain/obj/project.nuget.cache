@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8NaQvPg4NygL8QnpgpdgeQpqsh6A5QDWVsFVWZJcO9u5BFYkzOq7zUq2uIfVCwIB8mwqV8l7BdO4u8OfXWaVDg==",
+  "dgSpecHash": "5nL3pZOYsEFGivArM3IV150owkevMylS/9775/zXgl/ijfM+FvzY0oEMMb0kzOvQrerFREuBEbBWCjAQ96U4zw==",
   "success": true,
-  "projectFilePath": "D:\\Git_Rep\\Api\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\New\\.nuget\\packages\\dateonlytimeonly.aspnet\\2.1.1\\dateonlytimeonly.aspnet.2.1.1.nupkg.sha512"
+  ],
   "logs": []
 }

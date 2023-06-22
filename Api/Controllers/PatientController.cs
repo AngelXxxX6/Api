@@ -1,29 +1,28 @@
-﻿
-using Domain.Enitity;
+﻿using Domain.Enitity;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Api.Controllers
 {
     [ApiController]
-    public class DoctorController : ControllerBase
+    public class PatientController : ControllerBase
     {
-        private readonly IDoctorService _service;
+        private readonly IPatientService _service;
 
-        public DoctorController(IDoctorService service)
+        public PatientController(IPatientService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        [Route("Doctor/GetDoctors")]
+        [Route("Patient/GetPatients")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IEnumerable> GetDoctors()
+        public async Task<IEnumerable> GetPatients()
         {
-            var response = await _service.GetDoctors();
+            var response = await _service.GetPatients();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return response.Data;
@@ -33,8 +32,8 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Doctor/DeleteById")]
-        [Authorize(Roles = "MainAdmin, MainDoctor")]
+        [Route("Patient/DeleteById")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);
@@ -46,9 +45,9 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Doctor/Create")]
-        [Authorize(Roles = "MainAdmin, MainDoctor")]
-        public async Task<bool> Create(DoctorViewModel model)
+        [Route("Patient/Create")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<bool> Create(PatientViewModel model)
         {
             var response = await _service.Create(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
@@ -59,9 +58,9 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Doctor/UpdateById")]
-        [Authorize(Roles = "MainAdmin,MainDoctor")]
-        public async Task<bool> UpdateById(int id, DoctorViewModel model)
+        [Route("Patient/UpdateById")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<bool> UpdateById(int id, PatientViewModel model)
         {
             var response = await _service.UpdateById(id, model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)

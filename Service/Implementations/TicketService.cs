@@ -3,6 +3,7 @@ using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
+using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Numerics;
 
@@ -16,7 +17,7 @@ namespace Service.Implementations
             _ticketRepository = ticketRepository;
         }
 
-
+        [HttpGet]
         public async Task<IBaseResponse<IEnumerable<Ticket>>> GetTickets()
         {
             var baseResponse = new BaseResponse<IEnumerable<Ticket>>();
@@ -43,6 +44,7 @@ namespace Service.Implementations
                 };
             }
         }
+        [HttpPost]
         public async Task<IBaseResponse<bool>> Create(TicketViewModel ticket)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -66,6 +68,7 @@ namespace Service.Implementations
             }
             return baseResponse;
         }
+        [HttpPost]
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -93,6 +96,7 @@ namespace Service.Implementations
                 };
             }
         }
+        [HttpPost]
         public async Task<IBaseResponse<bool>> UpdateById(int id, TicketViewModel ticket)
         {
             var baseResponse = new BaseResponse<bool>();

@@ -15,8 +15,10 @@ namespace Domain.Enitity
     public class TicketViewModel
     {
         [Required]
+        [MinLength(4)]
         public string PatientFIO { get; set; }
         [Required]
+        [MinLength(4)]
         public string DoctorFIO { get; set; }
 
         [Required]
