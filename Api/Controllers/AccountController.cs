@@ -95,16 +95,7 @@ namespace Api.Controllers
         }
     }
 
-    public class TicketController : Controller
-    {
-        [HttpGet]
-        [Authorize(Roles = "MainRegistryWorker, MainAdmin")]
-        public IActionResult Index()
-        {
-            // Логика обработки страницы Ticket
-            return View("~/Views/Home/Ticket.cshtml");
-        }
-    }
+   
 
 
 

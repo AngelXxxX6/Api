@@ -3,6 +3,7 @@ using DAL;
 using DAL.Interfaces;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Service.Implementations;
 using Service.Interfaces;
@@ -45,8 +46,5 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute();
 app.Run();

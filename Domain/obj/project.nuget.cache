@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+GnQTeXfNIep+d3aQJi/FuWPqls2rusBTYm7SBcuEbW7V6qWnwoOhSUFdKwjpvrLAx1n4SsanlSm8kU+d37zLA==",
+  "dgSpecHash": "qXyWGWI2GkaO+QvovUaFTEZajllxEeykzeIPg8ijzhainh6CJEVyvAP/sw50iLDI/tTpQq2a+ibT6waahR1HjQ==",
   "success": true,
-  "projectFilePath": "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

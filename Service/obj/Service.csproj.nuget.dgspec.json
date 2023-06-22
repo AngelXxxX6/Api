@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Course .Net\\API\\Api\\Service\\Service.csproj": {}
+    "C:\\Users\\New\\Desktop\\Api\\Api\\Service\\Service.csproj": {}
   },
   "projects": {
-    "D:\\Course .Net\\API\\Api\\DAL\\DAL.csproj": {
+    "C:\\Users\\New\\Desktop\\Api\\Api\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Course .Net\\API\\Api\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\New\\Desktop\\Api\\Api\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "D:\\Course .Net\\API\\Api\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\Stepan\\.nuget\\packages\\",
-        "outputPath": "D:\\Course .Net\\API\\Api\\DAL\\obj\\",
+        "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\New\\Desktop\\Api\\Api\\DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Stepan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj"
+              "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -70,25 +65,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj": {
+    "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Stepan\\.nuget\\packages\\",
-        "outputPath": "D:\\Course .Net\\API\\Api\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Stepan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,7 +87,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -130,25 +120,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Course .Net\\API\\Api\\Service\\Service.csproj": {
+    "C:\\Users\\New\\Desktop\\Api\\Api\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Course .Net\\API\\Api\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\New\\Desktop\\Api\\Api\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "D:\\Course .Net\\API\\Api\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\Stepan\\.nuget\\packages\\",
-        "outputPath": "D:\\Course .Net\\API\\Api\\Service\\obj\\",
+        "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\New\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Service\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Stepan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\New\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -156,18 +142,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Course .Net\\API\\Api\\DAL\\DAL.csproj": {
-                "projectPath": "D:\\Course .Net\\API\\Api\\DAL\\DAL.csproj"
+              "C:\\Users\\New\\Desktop\\Api\\Api\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\DAL\\DAL.csproj"
               },
-              "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Course .Net\\API\\Api\\Domain\\Domain.csproj"
+              "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\New\\Desktop\\Api\\Api\\Domain\\Domain.csproj"
               }
             }
           }
@@ -197,7 +182,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
