@@ -1,12 +1,14 @@
 ﻿using Domain.Enitity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
+using System.Collections;
 
 namespace Api.Controllers
 {
-    public class TicketController : Controller
+    [ApiController]
+    public class TicketController : ControllerBase
     {
-
         private readonly ITicketService _service;
 
         public TicketController(ITicketService service)
@@ -14,54 +16,53 @@ namespace Api.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> GetTickets()
+        [HttpGet]
+        [Route("Ticket/GetTickets")]
+        public async Task<IEnumerable> GetTickets()
         {
-
             var response = await _service.GetTickets();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return View(response.Data);
+                return response.Data;
             }
-            return RedirectToAction("Error");
+            return "bad";
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteById(int id)
+        [Route("Ticket/DeleteById")]
+        public async Task<bool> DeleteById(int id)
         {
-
             var response = await _service.DeleteById(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetTickets");
+                return true;
             }
-            return RedirectToAction("Error");
+            return false;
         }
 
-        public async Task<IActionResult> Create(TicketViewModel model)
+        [HttpPost]
+        [Route("Ticket/Create")]
+        public async Task<bool> Create(TicketViewModel model)
         {
             var response = await _service.Create(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetTickets");
-
+                return true;
             }
-            return RedirectToAction("Error");
+            return false;
         }
 
-        public async Task<IActionResult> UpdateById(int id, TicketViewModel model)
+        [HttpPost]
+        [Route("Ticket/UpdateById")]
+        public async Task<bool> UpdateById(int id, TicketViewModel model)
         {
             var response = await _service.UpdateById(id, model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetTickets");
-
-
-                
+                return true;
             }
-            return RedirectToAction("Error");
-
-
+            return true;
         }
-
     }
 }

@@ -36,7 +36,8 @@ namespace DAL.Repositories
         public async Task<bool> DeleteById(int id)
         {
             var a = _context.Tickets.Where(x => x.Id == id);
-            _context.Remove(a);
+            Ticket entity = a.FirstOrDefault();
+            _context.Tickets.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
         }

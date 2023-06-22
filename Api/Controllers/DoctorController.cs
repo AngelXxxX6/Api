@@ -1,14 +1,14 @@
 ﻿using Domain.Enitity;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Service.Implementations;
 using Service.Interfaces;
+using System.Collections;
 
 namespace Api.Controllers
 {
-    public class DoctorController : Controller
+    [ApiController]
+    public class DoctorController : ControllerBase
     {
-
         private readonly IDoctorService _service;
 
         public DoctorController(IDoctorService service)
@@ -17,57 +17,52 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        
-        public async Task<IActionResult> GetDoctors()
+        [Route("Doctor/GetDoctors")]
+        public async Task<IEnumerable> GetDoctors()
         {
-
             var response = await _service.GetDoctors();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return View(response.Data);
+                return response.Data;
             }
-            return RedirectToAction("Error");
+            return "bad";
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteById(int id)
+        [Route("Doctor/DeleteById")]
+        public async Task<bool> DeleteById(int id)
         {
-
             var response = await _service.DeleteById(id);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetDoctors");
+                return true;
             }
-            return RedirectToAction("Error");
+            return false;
         }
 
-        public async Task<IActionResult> Create(string fio,string post,int roomNumber, TimeOnly workTimeStart,TimeOnly workTimeEnd)
+        [HttpPost]
+        [Route("Doctor/Create")]
+        public async Task<bool> Create(DoctorViewModel model)
         {
-            
-            var response = await _service.Create(new DoctorViewModel
-            {
-                FIO = fio,Post = post,RoomNumber = roomNumber,WorkTimeStart = workTimeStart,WorkTimeEnd = workTimeEnd
-            });
+            var response = await _service.Create(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetDoctors");
-
+                return true;
             }
-            return RedirectToAction("Error");
+            return false;
         }
 
-        public async Task<IActionResult> UpdateById(int id,DoctorViewModel model)
+        [HttpPost]
+        [Route("Doctor/UpdateById")]
+        public async Task<bool> UpdateById(int id, DoctorViewModel model)
         {
-            
-            var response = await _service.UpdateById(id,model);
+            var response = await _service.UpdateById(id, model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return RedirectToAction("GetDoctors");
-
+                return true;
             }
-            return RedirectToAction("Error");
-
+            return true;
         }
     }
 }

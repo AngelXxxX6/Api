@@ -52,6 +52,7 @@ namespace Service.Implementations
                 {
                     PatientFIO = ticket.PatientFIO,
                     DoctorFIO = ticket.DoctorFIO,
+                    RoomNumber = ticket.RoomNumber,
                     DateTimeTicket = ticket.DateTimeTicket,
                 };
                 await _ticketRepository.Create(Ticket);

@@ -31,7 +31,8 @@ namespace DAL.Repositories
         {
 
             var a = _context.Users.Where(x => x.Id == id);
-            _context.Remove(a);
+            User entity = a.FirstOrDefault();
+            _context.Users.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
 
