@@ -17,7 +17,7 @@ namespace Service.Implementations
             _ticketRepository = ticketRepository;
         }
 
-        [HttpGet]
+        
         public async Task<IBaseResponse<IEnumerable<Ticket>>> GetTickets()
         {
             var baseResponse = new BaseResponse<IEnumerable<Ticket>>();
@@ -44,7 +44,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [HttpPost]
+     
         public async Task<IBaseResponse<bool>> Create(TicketViewModel ticket)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -96,7 +96,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [HttpPost]
+     
         public async Task<IBaseResponse<bool>> UpdateById(int id, TicketViewModel ticket)
         {
             var baseResponse = new BaseResponse<bool>();

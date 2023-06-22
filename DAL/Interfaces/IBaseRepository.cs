@@ -8,7 +8,7 @@ namespace DAL.Interfaces
         IQueryable<T> Select();
 
         Task<bool> Delete(T entity);
-        Task<bool> DeleteById(int id);
+       
         Task<bool> Update(T entity);
     }
 }

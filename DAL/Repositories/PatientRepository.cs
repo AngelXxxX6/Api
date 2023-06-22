@@ -27,14 +27,7 @@ namespace DAL.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteById(int id)
-        {
-            var a = _context.Patients.Where(x => x.Id == id);
-            Patient entity = a.FirstOrDefault();
-            _context.Patients.Remove(entity);
-            await _context.SaveChangesAsync();
-            return true;
-        }
+        
 
        
         public IQueryable<Patient> Select()

@@ -32,8 +32,8 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Patient/DeleteById")]
-        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        [Authorize(Roles = "Main, MainDoctor, Worker")]
+        [Route("/Patient/Delete")]
         public async Task<bool> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);
@@ -58,7 +58,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Patient/UpdateById")]
+        [Route("Patient/Update")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> UpdateById(int id, PatientViewModel model)
         {

@@ -1,5 +1,4 @@
-﻿
-using Domain.Enitity;
+﻿using Domain.Enitity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

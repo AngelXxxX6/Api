@@ -16,7 +16,7 @@ namespace Service.Implementations
             _doctorRepository = doctorRepository;
         }
 
-        [HttpGet]
+       
         public async Task<IBaseResponse<IEnumerable<Doctor>>> GetDoctors()
         {
             var baseResponse = new BaseResponse<IEnumerable<Doctor>>();
@@ -43,7 +43,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [HttpPost]
+        
         public async Task<IBaseResponse<bool>> Create(DoctorViewModel doctor)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -68,13 +68,14 @@ namespace Service.Implementations
             }
             return baseResponse;
         }
-        [HttpPost]
+      
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                if (await _doctorRepository.DeleteById(id))
+                var model = _doctorRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+                if (await _doctorRepository.Delete(model))
                 {
                     baseResponse.Data = true;
                     baseResponse.StatusCode = StatusCode.OK;
@@ -96,7 +97,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [HttpPost]
+        
         public async Task<IBaseResponse<bool>> UpdateById(int id, DoctorViewModel doctor)
         {
             var baseResponse = new BaseResponse<bool>();

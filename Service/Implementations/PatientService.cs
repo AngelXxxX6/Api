@@ -16,7 +16,7 @@ namespace Service.Implementations
             _patientRepository = patientRepository;
         }
 
-        [HttpGet]
+       
         public async Task<IBaseResponse<IEnumerable<Patient>>> GetPatients()
         {
             var baseResponse = new BaseResponse<IEnumerable<Patient>>();
@@ -43,7 +43,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [HttpPost]
+       
         public async Task<IBaseResponse<bool>> Create(PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -67,13 +67,13 @@ namespace Service.Implementations
             }
             return baseResponse;
         }
-        [HttpPost]
+       
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
             try
             {
-                if (await _patientRepository.DeleteById(id))
+                if (await _patientRepository.Delete(id))
                 {
                     baseResponse.Data = true;
                     baseResponse.StatusCode = StatusCode.OK;
@@ -95,7 +95,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [HttpPost]
+       
         public async Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();

@@ -18,8 +18,8 @@ namespace Service.Implementations
             _userRepository = userRepository;
         }
 
-        [Authorize(Roles = "MainAdmnin, MainRegistryWorker")]
-        [HttpPost]
+       
+       
         public async Task<IBaseResponse<bool>> Create(UserViewModel user)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -59,8 +59,8 @@ namespace Service.Implementations
             return baseResponse;
 
         }
-        [Authorize(Roles = "MainAdmnin, MainRegistryWorker")]
-        [HttpGet]
+       
+       
         public async Task<IBaseResponse<List<User>>> GetUsers()
         {
             var baseResponse = new BaseResponse<List<User>>();
@@ -88,8 +88,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [Authorize(Roles = "MainAdmnin, MainRegistryWorker")]
-        [HttpPost]
+       
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -128,8 +127,7 @@ namespace Service.Implementations
         }
 
 
-        [Authorize(Roles = "MainAdmnin, MainRegistryWorker")]
-        [HttpPost]
+        
         public async Task<IBaseResponse<bool>> UpdateById(int id, UserViewModel user)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -176,8 +174,7 @@ namespace Service.Implementations
                 };
             }
         }
-        [Authorize(Roles = "MainAdmnin, MainRegistryWorker")]
-        [HttpGet]
+        
         public async Task<IBaseResponse<User>> GetById(int id)
         {
             var baseResponse = new BaseResponse<User>();
