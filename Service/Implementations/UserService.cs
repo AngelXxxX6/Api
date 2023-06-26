@@ -1,13 +1,9 @@
 ﻿using DAL.Interfaces;
-using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Data;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Service.Implementations
 {
@@ -19,8 +15,8 @@ namespace Service.Implementations
             _userRepository = userRepository;
         }
 
-       
-       
+
+
         public async Task<IBaseResponse<bool>> Create(UserViewModel user)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -43,11 +39,11 @@ namespace Service.Implementations
                         Description = "Недостаточно прав",
                         Data = false
                     };
-                 } 
+                }
 
             }
-                
-            
+
+
             catch (Exception ex)
             {
                 return new BaseResponse<bool>()
@@ -60,15 +56,15 @@ namespace Service.Implementations
             return baseResponse;
 
         }
-       
-       
+
+
         public async Task<IBaseResponse<List<User>>> GetUsers()
         {
             var baseResponse = new BaseResponse<List<User>>();
             try
             {
                 var users = _userRepository.Select().ToList();
-              
+
                 if (!users.Any())
                 {
                     baseResponse.Description = "Найдено 0 пользователей";
@@ -89,7 +85,7 @@ namespace Service.Implementations
                 };
             }
         }
-       
+
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -129,7 +125,7 @@ namespace Service.Implementations
         }
 
 
-        
+
         public async Task<IBaseResponse<bool>> UpdateById(int id, UserViewModel user)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -176,15 +172,15 @@ namespace Service.Implementations
                 };
             }
         }
-        
+
         public async Task<IBaseResponse<User>> GetById(int id)
         {
             var baseResponse = new BaseResponse<User>();
             try
             {
-               
-                User user = _userRepository.Select().Where(x=>x.Id == id).FirstOrDefault();
-                if(user!=null)
+
+                User user = _userRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+                if (user != null)
                 {
                     baseResponse.Data = user;
                     baseResponse.StatusCode = StatusCode.OK;
@@ -192,7 +188,7 @@ namespace Service.Implementations
                 }
                 else
                 {
-                    
+
                     baseResponse.StatusCode = StatusCode.UserNotFound;
                     return baseResponse;
                 }

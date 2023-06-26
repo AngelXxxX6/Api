@@ -7,6 +7,7 @@ using System.Collections;
 namespace Api.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorService _service;
@@ -17,7 +18,6 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [Route("Doctor/GetDoctors")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<IEnumerable> GetDoctors()
         {
@@ -26,12 +26,11 @@ namespace Api.Controllers
             {
                 return response.Data;
             }
-            return "bad";
+            return $"{response.StatusCode}";
 
         }
 
-        [HttpPost]
-        [Route("Doctor/DeleteById")]
+        [HttpDelete]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
         public async Task<bool> DeleteById(int id)
         {
@@ -43,8 +42,7 @@ namespace Api.Controllers
             return false;
         }
 
-        [HttpPost]
-        [Route("Doctor/Create")]
+        [HttpPut]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
         public async Task<bool> Create(DoctorViewModel model)
         {
@@ -57,7 +55,6 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Doctor/UpdateById")]
         [Authorize(Roles = "MainAdmin,MainDoctor")]
         public async Task<bool> UpdateById(int id, DoctorViewModel model)
         {
@@ -66,7 +63,7 @@ namespace Api.Controllers
             {
                 return true;
             }
-            return true;
+            return false;
         }
     }
 }

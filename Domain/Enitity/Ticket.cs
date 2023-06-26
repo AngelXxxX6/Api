@@ -22,7 +22,7 @@ namespace Domain.Enitity
         public string DoctorFIO { get; set; }
 
         [Required]
-        public int RoomNumber { get; set;}
+        public int RoomNumber { get; set; }
         [Required]
         public DateTime DateTimeTicket { get; set; }
     }

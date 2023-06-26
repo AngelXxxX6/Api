@@ -6,7 +6,8 @@
         InternalServerError = 500,
         UserNotFound = 100,
         PatientNotFound = 101,
-        TicketNotFound =  102,
+        TicketNotFound = 102,
         DoctorNotFound = 103,
+        ModelInvail = 104,
     }
 }
