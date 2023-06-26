@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -27,11 +28,16 @@ namespace DAL.Repositories
             return true;
         }
 
-
-        public IQueryable<Ticket> Select()
+        public async Task<Ticket> GetById(int id)
         {
-            return _context.Tickets;
+            return await _context.Tickets.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<IEnumerable<Ticket>> Select()
+        {
+            return await _context.Tickets.ToListAsync();
+        }
+
 
         public async Task<bool> Update(Ticket entity)
         {

@@ -18,59 +18,29 @@ namespace Service.Implementations
             _userRepository = userRepository;
 
         }
-        public async Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model)
+        public async Task <ClaimsIdentity> Login(LoginViewModel model)
         {
-            try
-            {
-                var user = await _userRepository.Select().FirstOrDefaultAsync(x => x.Login == model.Login);
-                if (user == null)
-                {
-                    return new BaseResponse<ClaimsIdentity>()
-                    {
-                        Description = "UserNoFound"
-                    };
-                }
 
+            var user = await _userRepository.GetByLogin(model.Login);
+               
                 if (user.Password != HashPasswordHelper.HashPassword(model.Password))
                 {
-                    return new BaseResponse<ClaimsIdentity>()
-                    {
-                        Description = "Incorrect user or password"
-                    };
+                    return new ClaimsIdentity();
                 }
                 var result = Authenticate(user);
+                 return result;
 
-                return new BaseResponse<ClaimsIdentity>()
-                {
-                    Data = result,
-                    StatusCode = StatusCode.OK
-                };
-            }
-            catch (Exception ex)
-            {
-
-                return new BaseResponse<ClaimsIdentity>()
-                {
-                    Description = $"[Login : {ex.Message}",
-                    StatusCode = StatusCode.InternalServerError
-                };
-            }
+                
+            
+           
         }
 
-        public async Task<BaseResponse<bool>> Register(RegisterViewModel model)
+        public async Task<bool> Register(RegisterViewModel model)
         {
-
-            try
+                       
+                var user = await _userRepository.GetByLogin(model.Login);
+            if (user == null)
             {
-                var user = await _userRepository.Select().FirstOrDefaultAsync(x => x.Login == model.Login);
-                if (user != null)
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = "User with this name already exists ",
-                    };
-                }
-
                 user = new User()
                 {
                     Login = model.Login,
@@ -79,26 +49,14 @@ namespace Service.Implementations
                 };
 
                 await _userRepository.Create(user);
-
-
-
-                return new BaseResponse<bool>()
-                {
-                    Data = true,
-                    Description = "User added",
-                    StatusCode = StatusCode.OK
-                };
             }
-            catch (Exception ex)
+            else
             {
-
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[Register] :{ex.Message}",
-                    StatusCode = StatusCode.InternalServerError
-                };
+                return false;
             }
-
+               return true;
+                                    
+                       
         }
         private ClaimsIdentity Authenticate(User user)
         {
@@ -110,5 +68,7 @@ namespace Service.Implementations
             return new ClaimsIdentity(claims, "ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
         }
+
+        
     }
 }

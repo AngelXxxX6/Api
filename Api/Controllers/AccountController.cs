@@ -23,15 +23,15 @@ namespace Api.Controllers
         [HttpPut]
         [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
 
-        public async Task<StatusCode> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Register(model);
 
-                return response.StatusCode;
+                return Ok(response);
             }
-            else return Domain.Enum.StatusCode.ModelInvail;
+            else return BadRequest(ModelState);
 
         }
 
@@ -40,29 +40,29 @@ namespace Api.Controllers
         [HttpPost]
         [AllowAnonymous]
 
-        public async Task<StatusCode> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Login(model);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(response.Data));
+                    new ClaimsPrincipal(response));
 
-                return response.StatusCode;
+                return Ok(response.Name);
 
             }
-            return Domain.Enum.StatusCode.ModelInvail;
+            return BadRequest(ModelState);
         }
 
 
         [Authorize]
         [HttpGet]
         [Route("/[controller]/LogOut")]
-        public async Task<StatusCode> Logout()
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return Domain.Enum.StatusCode.OK;
+            return Ok();
         }
     }
 }

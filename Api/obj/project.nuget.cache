@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jmjeQbZxLQE3bmL3+bbLYfFJ7W/iDVRfAft6jWhhos3SBUzKgGbHrtswVxLDgvMefjL/547wDI1erydLrHlSRw==",
+  "dgSpecHash": "1t8TZT/lQQ5VP2EoR3ykMXCdlQPfLRXwJPZGMW8HjU591XCd0JjEwSArYbjr3nRONnNUZJMidjN0s760f9djKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\New\\Desktop\\Api\\Api\\Api\\Api.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\New\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\New\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\New\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
+    "C:\\Users\\New\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\New\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\New\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\New\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",

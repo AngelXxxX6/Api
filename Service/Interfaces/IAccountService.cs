@@ -7,8 +7,8 @@ namespace Service.Interfaces
     public interface IAccountService
     {
 
-        Task<BaseResponse<bool>> Register(RegisterViewModel model);
-        Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model);
+        Task<bool> Register(RegisterViewModel model);
+        Task<ClaimsIdentity> Login(LoginViewModel model);
 
 
     }

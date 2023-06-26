@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Collections;
+using System.Formats.Asn1;
 
 namespace Api.Controllers
 {
@@ -19,51 +20,45 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IEnumerable> GetDoctors()
+        public async Task<IActionResult> GetDoctors()
         {
             var response = await _service.GetDoctors();
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return response.Data;
-            }
-            return $"{response.StatusCode}";
 
+            return Ok(response);
+
+        }
+
+        [HttpGet]
+        [Route("/[controller]/GetDoctor")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<IActionResult> GetDoctor(int id)
+        {
+            var response = await _service.GetDoctorById(id);
+            return Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
-        public async Task<bool> DeleteById(int id)
+        public async Task<IActionResult> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            return Ok(response);
         }
 
         [HttpPut]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
-        public async Task<bool> Create(DoctorViewModel model)
+        public async Task<IActionResult> Create(DoctorViewModel model)
         {
             var response = await _service.Create(model);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            return Ok(response);
         }
 
         [HttpPost]
         [Authorize(Roles = "MainAdmin,MainDoctor")]
-        public async Task<bool> UpdateById(int id, DoctorViewModel model)
+        public async Task<IActionResult> UpdateById(int id, DoctorViewModel model)
         {
             var response = await _service.UpdateById(id, model);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            return  Ok(response);
         }
     }
 }

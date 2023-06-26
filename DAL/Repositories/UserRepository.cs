@@ -1,6 +1,7 @@
 ﻿
 using DAL.Interfaces;
 using Domain.Enitity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -26,10 +27,19 @@ namespace DAL.Repositories
             return true;
         }
 
-
-        public IQueryable<User> Select()
+        public async Task<User> GetById(int id)
         {
-            return _context.Users;
+            return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<User> GetByLogin(string login)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.Login == login);
+        }
+
+        public async Task<IEnumerable<User>> Select()
+        {
+            return await _context.Users.ToListAsync();
         }
 
         public async Task<bool> Update(User entity)

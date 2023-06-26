@@ -19,51 +19,41 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IEnumerable> GetTickets()
+        public async Task<IActionResult> GetTickets()
         {
             var response = await _service.GetTickets();
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return response.Data;
-            }
-            return "bad";
+            return Ok(response);
 
         }
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<bool> DeleteById(int id)
+        public async Task<IActionResult> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            if (response)
+                return Ok(response);
+            return BadRequest(response);
         }
 
         [HttpPut]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<bool> Create(TicketViewModel model)
+        public async Task<IActionResult> Create(TicketViewModel model)
         {
             var response = await _service.Create(model);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            if (response)
+                return Ok(response);
+            return BadRequest(response);
         }
 
         [HttpPost]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<bool> UpdateById(int id, TicketViewModel model)
+        public async Task<IActionResult> UpdateById(int id, TicketViewModel model)
         {
             var response = await _service.UpdateById(id, model);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return true;
+            if (response)
+                return Ok(response);
+            return BadRequest(response);
         }
     }
 }

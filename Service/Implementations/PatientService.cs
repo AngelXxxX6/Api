@@ -15,38 +15,20 @@ namespace Service.Implementations
         }
 
 
-        public async Task<IBaseResponse<IEnumerable<Patient>>> GetPatients()
+        public async Task<IEnumerable<Patient>> GetPatients()
         {
-            var baseResponse = new BaseResponse<IEnumerable<Patient>>();
-            try
-            {
-                var patients = _patientRepository.Select().ToList();
-                if (patients.Count() == 0)
-                {
-                    baseResponse.Description = "Найдено 0 пациентов";
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
+            
+                var patients = await _patientRepository.Select();
 
-                baseResponse.Data = patients;
-                baseResponse.StatusCode = StatusCode.OK;
-                return baseResponse;
+                return patients;
 
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<IEnumerable<Patient>>()
-                {
-                    Description = $"[GetPatients] : {ex.Message}"
-                };
-            }
+            
+           
         }
 
-        public async Task<IBaseResponse<bool>> Create(PatientViewModel patient)
+        public async Task<bool> Create(PatientViewModel patient)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
+           
                 var Patient = new Patient()
                 {
                     FIO = patient.FIO,
@@ -54,84 +36,48 @@ namespace Service.Implementations
                     Phone = patient.Phone,
                     DateBirthday = patient.DateBirthday,
                 };
-                await _patientRepository.Create(Patient);
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[Create] : {ex.Message}"
-                };
-            }
-            return baseResponse;
+               await _patientRepository.Create(Patient);
+            return true;
+            
+           
         }
 
-        public async Task<IBaseResponse<bool>> DeleteById(int id)
+        public async Task<bool> DeleteById(int id)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-                if (await _patientRepository.Delete(model))
-                {
-                    baseResponse.Data = true;
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-                else
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = $"[DeleteById] : {StatusCode.UserNotFound}"
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[DeleteById] : {ex.Message}"
-                };
-            }
+           
+                var model = await _patientRepository.GetById(id);
+            await _patientRepository.Delete(model);
+            return true;
+                
+               
+            
+           
         }
 
-        public async Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient)
+        public async Task<bool> UpdateById(int id, PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+            
+                var model = await _patientRepository.GetById(id);
 
                 if (model == null)
                 {
-                    baseResponse.Data = false;
-                    baseResponse.StatusCode = StatusCode.UserNotFound;
-                    return baseResponse;
+                return false;
                 }
                 model.FIO = patient.FIO;
                 model.Adress = patient.Adress;
                 model.Phone = patient.Phone;
                 model.DateBirthday = patient.DateBirthday;
-                if (await _patientRepository.Update(model))
-                {
-                    baseResponse.StatusCode = StatusCode.OK;
-                    baseResponse.Data = true;
-                    return baseResponse;
-                }
-                else
-                {
-                    baseResponse.Data = false;
-                    baseResponse.StatusCode = StatusCode.InternalServerError;
-                    return baseResponse;
-                }
+            await _patientRepository.Update(model);
+                return true;
+                
             }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[UpdateById] : {ex.Message}"
-                };
-            }
+
+        public async Task<Patient> GetPatientById(int id)
+        {
+            var model = await _patientRepository.GetById(id);
+            return model;
         }
     }
-}
+    }
+

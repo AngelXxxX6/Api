@@ -5,9 +5,11 @@ namespace Service.Interfaces
 {
     public interface IDoctorService
     {
-        Task<IBaseResponse<IEnumerable<Doctor>>> GetDoctors();
-        Task<IBaseResponse<bool>> Create(DoctorViewModel doctor);
-        Task<IBaseResponse<bool>> DeleteById(int id);
-        Task<IBaseResponse<bool>> UpdateById(int id, DoctorViewModel doctor);
+        Task<IEnumerable<Doctor>> GetDoctors();
+        Task <bool> Create(DoctorViewModel doctor);
+        Task <Doctor> GetDoctorById(int id);
+     
+        Task<bool> DeleteById(int id);
+        Task<bool> UpdateById(int id, DoctorViewModel doctor);
     }
 }

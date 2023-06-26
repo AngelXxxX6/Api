@@ -1,5 +1,7 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
+using Microsoft.EntityFrameworkCore;
+using System.Xml;
 
 namespace DAL.Repositories
 {
@@ -25,10 +27,17 @@ namespace DAL.Repositories
             return true;
         }
 
-        public IQueryable<Doctor> Select()
+        public async Task<Doctor> GetById(int id)
         {
-            return _context.Doctors;
+            return await _context.Doctors.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<IEnumerable<Doctor>> Select()
+        {
+            return await _context.Doctors.ToListAsync();
+        }
+
+
 
         public async Task<bool> Update(Doctor entity)
         {
@@ -36,5 +45,8 @@ namespace DAL.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+
+
     }
 }

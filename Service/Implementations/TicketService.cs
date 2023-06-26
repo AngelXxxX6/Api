@@ -16,38 +16,18 @@ namespace Service.Implementations
         }
 
 
-        public async Task<IBaseResponse<IEnumerable<Ticket>>> GetTickets()
+        public async Task<IEnumerable<Ticket>> GetTickets()
         {
-            var baseResponse = new BaseResponse<IEnumerable<Ticket>>();
-            try
-            {
-                var tickets = _ticketRepository.Select().ToList();
-                if (tickets.Count() == 0)
-                {
-                    baseResponse.Description = "Найдено 0 талонов";
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-
-                baseResponse.Data = tickets;
-                baseResponse.StatusCode = StatusCode.OK;
-                return baseResponse;
-
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<IEnumerable<Ticket>>()
-                {
-                    Description = $"[GetTickets] : {ex.Message}"
-                };
-            }
+           
+               var tickets = await _ticketRepository.Select();
+               return tickets;
+                                    
+            
         }
 
-        public async Task<IBaseResponse<bool>> Create(TicketViewModel ticket)
+        public async Task<bool> Create(TicketViewModel ticket)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
+           
                 var Ticket = new Ticket()
                 {
                     PatientFIO = ticket.PatientFIO,
@@ -56,82 +36,42 @@ namespace Service.Implementations
                     DateTimeTicket = ticket.DateTimeTicket,
                 };
                 await _ticketRepository.Create(Ticket);
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[Create] : {ex.Message}"
-                };
-            }
-            return baseResponse;
+            return true;
+            
+           
+            
         }
         [HttpPost]
-        public async Task<IBaseResponse<bool>> DeleteById(int id)
+        public async Task<bool> DeleteById(int id)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                var model = _ticketRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-                if (await _ticketRepository.Delete(model))
-                {
-                    baseResponse.Data = true;
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-                else
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = $"[DeleteById] : {StatusCode.UserNotFound}"
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[DeleteById] : {ex.Message}"
-                };
-            }
+           
+                var model = await _ticketRepository.GetById(id);
+                await _ticketRepository.Delete(model);
+                return true;
+               
+            
+            
         }
 
-        public async Task<IBaseResponse<bool>> UpdateById(int id, TicketViewModel ticket)
+        public async Task<bool> UpdateById(int id, TicketViewModel ticket)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                var model = _ticketRepository.Select().Where(x => x.Id == id).FirstOrDefault();
+           
+                var model = await _ticketRepository.GetById(id);
 
-                if (model == null)
-                {
-                    baseResponse.Data = false;
-                    baseResponse.StatusCode = StatusCode.UserNotFound;
-                    return baseResponse;
-                }
+                
                 model.PatientFIO = ticket.PatientFIO;
                 model.DoctorFIO = ticket.DoctorFIO;
                 model.DateTimeTicket = ticket.DateTimeTicket;
-                if (await _ticketRepository.Update(model))
-                {
-                    baseResponse.StatusCode = StatusCode.OK;
-                    baseResponse.Data = true;
-                    return baseResponse;
-                }
-                else
-                {
-                    baseResponse.Data = false;
-                    baseResponse.StatusCode = StatusCode.InternalServerError;
-                    return baseResponse;
-                }
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[UpdateById] : {ex.Message}"
-                };
-            }
+            await _ticketRepository.Update(model);
+                return true;
+            
+            
+        }
+
+        public async Task<Ticket> GetById(int id)
+        {
+            var model =await _ticketRepository.GetById(id);
+            return model;
         }
     }
 }
