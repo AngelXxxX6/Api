@@ -22,11 +22,11 @@ namespace Domain.Enitity
         public string FIO { get; set; }
 
         [Required]
-       
+
         public string Post { get; set; }
 
         [Required]
-       
+
         public int RoomNumber { get; set; }
 
         [Required]

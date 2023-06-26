@@ -7,6 +7,7 @@ using System.Collections;
 namespace Api.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class TicketController : ControllerBase
     {
         private readonly ITicketService _service;
@@ -17,7 +18,6 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [Route("Ticket/GetTickets")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<IEnumerable> GetTickets()
         {
@@ -30,8 +30,7 @@ namespace Api.Controllers
 
         }
 
-        [HttpPost]
-        [Route("Ticket/DeleteById")]
+        [HttpDelete]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> DeleteById(int id)
         {
@@ -43,8 +42,7 @@ namespace Api.Controllers
             return false;
         }
 
-        [HttpPost]
-        [Route("Ticket/Create")]
+        [HttpPut]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> Create(TicketViewModel model)
         {
@@ -57,7 +55,6 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Route("Ticket/UpdateById")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
         public async Task<bool> UpdateById(int id, TicketViewModel model)
         {

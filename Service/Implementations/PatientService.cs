@@ -1,9 +1,7 @@
 ﻿using DAL.Interfaces;
-using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enum;
 using Domain.Response;
-using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 
 namespace Service.Implementations
@@ -16,13 +14,13 @@ namespace Service.Implementations
             _patientRepository = patientRepository;
         }
 
-       
+
         public async Task<IBaseResponse<IEnumerable<Patient>>> GetPatients()
         {
             var baseResponse = new BaseResponse<IEnumerable<Patient>>();
             try
             {
-                var patients =  _patientRepository.Select().ToList();
+                var patients = _patientRepository.Select().ToList();
                 if (patients.Count() == 0)
                 {
                     baseResponse.Description = "Найдено 0 пациентов";
@@ -43,7 +41,7 @@ namespace Service.Implementations
                 };
             }
         }
-       
+
         public async Task<IBaseResponse<bool>> Create(PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -67,7 +65,7 @@ namespace Service.Implementations
             }
             return baseResponse;
         }
-       
+
         public async Task<IBaseResponse<bool>> DeleteById(int id)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -81,11 +79,11 @@ namespace Service.Implementations
                     return baseResponse;
                 }
                 else
-                { 
-                    return new BaseResponse<bool>() 
-                    { 
-                        Description = $"[DeleteById] : {StatusCode.UserNotFound}" 
-                    }; 
+                {
+                    return new BaseResponse<bool>()
+                    {
+                        Description = $"[DeleteById] : {StatusCode.UserNotFound}"
+                    };
                 }
             }
             catch (Exception ex)
@@ -96,14 +94,14 @@ namespace Service.Implementations
                 };
             }
         }
-       
+
         public async Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
             try
             {
                 var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-               
+
                 if (model == null)
                 {
                     baseResponse.Data = false;

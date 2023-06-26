@@ -1,20 +1,12 @@
 ﻿using DAL.Interfaces;
-using DAL.Repositories;
 using Domain.Enitity;
 using Domain.Enitity.AccountViewsModel;
 using Domain.Enum;
 using Domain.Helpers;
 using Domain.Response;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Logging;
 using Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Implementations
 {
@@ -24,7 +16,7 @@ namespace Service.Implementations
         public AccountService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-           
+
         }
         public async Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model)
         {
@@ -35,7 +27,7 @@ namespace Service.Implementations
                 {
                     return new BaseResponse<ClaimsIdentity>()
                     {
-                        Description = "Пользователь не найден"
+                        Description = "UserNoFound"
                     };
                 }
 
@@ -43,7 +35,7 @@ namespace Service.Implementations
                 {
                     return new BaseResponse<ClaimsIdentity>()
                     {
-                        Description = "Неверный пароль или логин"
+                        Description = "Incorrect user or password"
                     };
                 }
                 var result = Authenticate(user);
@@ -56,7 +48,7 @@ namespace Service.Implementations
             }
             catch (Exception ex)
             {
-                
+
                 return new BaseResponse<ClaimsIdentity>()
                 {
                     Description = $"[Login : {ex.Message}",
@@ -67,15 +59,15 @@ namespace Service.Implementations
 
         public async Task<BaseResponse<bool>> Register(RegisterViewModel model)
         {
-            
+
             try
             {
-                var user = await  _userRepository.Select().FirstOrDefaultAsync(x => x.Login == model.Login);
+                var user = await _userRepository.Select().FirstOrDefaultAsync(x => x.Login == model.Login);
                 if (user != null)
                 {
                     return new BaseResponse<bool>()
                     {
-                        Description = "Пользователь с таким логином уже есть",
+                        Description = "User with this name already exists ",
                     };
                 }
 
@@ -88,18 +80,18 @@ namespace Service.Implementations
 
                 await _userRepository.Create(user);
 
-                
+
 
                 return new BaseResponse<bool>()
                 {
                     Data = true,
-                    Description = "Объект добавился",
+                    Description = "User added",
                     StatusCode = StatusCode.OK
                 };
             }
             catch (Exception ex)
             {
-               
+
                 return new BaseResponse<bool>()
                 {
                     Description = $"[Register] :{ex.Message}",

@@ -1,0 +1,15 @@
+C:\Users\New\Desktop\Api\Api\DAL\bin\Debug\net7.0\DAL.deps.json
+C:\Users\New\Desktop\Api\Api\DAL\bin\Debug\net7.0\DAL.dll
+C:\Users\New\Desktop\Api\Api\DAL\bin\Debug\net7.0\DAL.pdb
+C:\Users\New\Desktop\Api\Api\DAL\bin\Debug\net7.0\Domain.dll
+C:\Users\New\Desktop\Api\Api\DAL\bin\Debug\net7.0\Domain.pdb
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.csproj.AssemblyReference.cache
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.AssemblyInfoInputs.cache
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.AssemblyInfo.cs
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.csproj.CopyComplete
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.dll
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\refint\DAL.dll
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\DAL.pdb
+C:\Users\New\Desktop\Api\Api\DAL\obj\Debug\net7.0\ref\DAL.dll

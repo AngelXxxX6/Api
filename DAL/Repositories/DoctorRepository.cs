@@ -1,6 +1,5 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
-using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -25,9 +24,6 @@ namespace DAL.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
-
-       
-        
 
         public IQueryable<Doctor> Select()
         {

@@ -1,4 +1,5 @@
 ﻿using Domain.Enitity.AccountViewsModel;
+using Domain.Enum;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +10,7 @@ using System.Security.Claims;
 namespace Api.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -18,52 +20,49 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPut]
         [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
-        [Route("/Account/Register")]
-        public async Task<bool> Register(RegisterViewModel model)
+
+        public async Task<StatusCode> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Register(model);
-                if (response.StatusCode == Domain.Enum.StatusCode.OK)
-                {
-                    return true;
-                }
+
+                return response.StatusCode;
             }
-            return false;
+            else return Domain.Enum.StatusCode.ModelInvail;
+
         }
 
 
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("/Account/Login")]
-        public async Task<bool> Login(LoginViewModel model)
+
+        public async Task<StatusCode> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Login(model);
-                if (response.StatusCode == Domain.Enum.StatusCode.OK)
-                {
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(response.Data));
 
-                    return true;
-                }
-                ModelState.AddModelError("", response.Description);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(response.Data));
+
+                return response.StatusCode;
+
             }
-            return false;
+            return Domain.Enum.StatusCode.ModelInvail;
         }
 
 
         [Authorize]
-        [Route("/Account/Logout")]
         [HttpGet]
-        public async Task<bool> Logout()
+        [Route("/[controller]/LogOut")]
+        public async Task<StatusCode> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return true;
+            return Domain.Enum.StatusCode.OK;
         }
     }
 }

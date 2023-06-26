@@ -6,6 +6,7 @@ using Service.Interfaces;
 namespace Api.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
 
@@ -17,7 +18,7 @@ namespace Api.Controllers
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpGet]
-        [Route("User/GetUsers")]
+
         public async Task<IEnumerable<User>> GetUsers()
         {
             var response = await _userService.GetUsers();
@@ -26,8 +27,8 @@ namespace Api.Controllers
         }
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
-        [HttpPost]
-        [Route("User/DeleteById")]
+        [HttpDelete]
+
         public async Task<bool> DeleteById(int id)
         {
 
@@ -39,8 +40,7 @@ namespace Api.Controllers
             return false; ;
         }
 
-        [Authorize(Roles = "MainAdmnim, MainRegistryWorker")]
-        [Route("User/UpdateById")]
+        [Authorize(Roles = "MainAdmin, MainRegistryWorker")]
         [HttpPost]
         public async Task<bool> UpdateById(int id, UserViewModel model)
         {
