@@ -6,7 +6,6 @@ namespace DAL.Repositories
 {
     public class TicketRepository : ITicketRepository
     {
-
         private readonly ApplicationContext _context;
 
         public TicketRepository(ApplicationContext context)
@@ -37,7 +36,6 @@ namespace DAL.Repositories
         {
             return await _context.Tickets.ToListAsync();
         }
-
 
         public async Task<bool> Update(Ticket entity)
         {

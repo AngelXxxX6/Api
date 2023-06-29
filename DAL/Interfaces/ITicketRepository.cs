@@ -2,8 +2,5 @@
 
 namespace DAL.Interfaces
 {
-    public interface ITicketRepository : IBaseRepository<Ticket>
-    {
-
-    }
+    public interface ITicketRepository : IBaseRepository<Ticket> { }
 }

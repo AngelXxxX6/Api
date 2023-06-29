@@ -23,9 +23,7 @@ namespace Api.Controllers
         public async Task<IActionResult> GetDoctors()
         {
             var response = await _service.GetDoctors();
-
             return Ok(response);
-
         }
 
         [HttpGet]
@@ -58,7 +56,7 @@ namespace Api.Controllers
         public async Task<IActionResult> UpdateById(int id, DoctorViewModel model)
         {
             var response = await _service.UpdateById(id, model);
-            return  Ok(response);
+            return Ok(response);
         }
     }
 }

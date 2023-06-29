@@ -14,47 +14,40 @@ namespace Api.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
+
         public AccountController(IAccountService accountService)
         {
             _accountService = accountService;
         }
 
-
         [HttpPut]
         [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
-
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Register(model);
-
                 return Ok(response);
             }
-            else return BadRequest(ModelState);
-
+            else
+                return BadRequest(ModelState);
         }
-
-
 
         [HttpPost]
         [AllowAnonymous]
-
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var response = await _accountService.Login(model);
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(response));
-
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(response)
+                );
                 return Ok(response.Name);
-
             }
             return BadRequest(ModelState);
         }
-
 
         [Authorize]
         [HttpGet]

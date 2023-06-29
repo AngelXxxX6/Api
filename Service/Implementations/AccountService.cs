@@ -13,32 +13,27 @@ namespace Service.Implementations
     public class AccountService : IAccountService
     {
         private readonly IUserRepository _userRepository;
+
         public AccountService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-
         }
-        public async Task <ClaimsIdentity> Login(LoginViewModel model)
+
+        public async Task<ClaimsIdentity> Login(LoginViewModel model)
         {
-
             var user = await _userRepository.GetByLogin(model.Login);
-               
-                if (user.Password != HashPasswordHelper.HashPassword(model.Password))
-                {
-                    return new ClaimsIdentity();
-                }
-                var result = Authenticate(user);
-                 return result;
 
-                
-            
-           
+            if (user.Password != HashPasswordHelper.HashPassword(model.Password))
+            {
+                return new ClaimsIdentity();
+            }
+            var result = Authenticate(user);
+            return result;
         }
 
         public async Task<bool> Register(RegisterViewModel model)
         {
-                       
-                var user = await _userRepository.GetByLogin(model.Login);
+            var user = await _userRepository.GetByLogin(model.Login);
             if (user == null)
             {
                 user = new User()
@@ -47,17 +42,15 @@ namespace Service.Implementations
                     Role = model.UserRole,
                     Password = HashPasswordHelper.HashPassword(model.Password),
                 };
-
                 await _userRepository.Create(user);
             }
             else
             {
                 return false;
             }
-               return true;
-                                    
-                       
+            return true;
         }
+
         private ClaimsIdentity Authenticate(User user)
         {
             var claims = new List<Claim>
@@ -65,10 +58,12 @@ namespace Service.Implementations
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
             };
-            return new ClaimsIdentity(claims, "ApplicationCookie",
-                ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            return new ClaimsIdentity(
+                claims,
+                "ApplicationCookie",
+                ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType
+            );
         }
-
-        
     }
 }

@@ -2,8 +2,5 @@
 
 namespace DAL.Interfaces
 {
-    public interface IPatientRepository : IBaseRepository<Patient>
-    {
-
-    }
+    public interface IPatientRepository : IBaseRepository<Patient> { }
 }

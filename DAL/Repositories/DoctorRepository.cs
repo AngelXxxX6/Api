@@ -13,6 +13,7 @@ namespace DAL.Repositories
         {
             _context = context;
         }
+
         public async Task<bool> Create(Doctor entity)
         {
             await _context.Doctors.AddAsync(entity);
@@ -37,16 +38,11 @@ namespace DAL.Repositories
             return await _context.Doctors.ToListAsync();
         }
 
-
-
         public async Task<bool> Update(Doctor entity)
         {
             _context.Doctors.Update(entity);
             await _context.SaveChangesAsync();
             return true;
         }
-
-
-
     }
 }

@@ -10,6 +10,5 @@ namespace Service.Interfaces
         Task<bool> DeleteById(int id);
         Task<bool> UpdateById(int id, UserViewModel user);
         Task<User> GetById(int id);
-
     }
 }

@@ -9,8 +9,8 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-
         private readonly IUserService _userService;
+
         public UserController(IUserService userService)
         {
             _userService = userService;
@@ -18,20 +18,16 @@ namespace Api.Controllers
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpGet]
-
         public async Task<IActionResult> GetUsers()
         {
             var response = await _userService.GetUsers();
-
             return Ok(response);
         }
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpDelete]
-
         public async Task<IActionResult> DeleteById(int id)
         {
-
             var response = await _userService.DeleteById(id);
             if (response)
                 return Ok(response);
@@ -46,8 +42,6 @@ namespace Api.Controllers
             if (response)
                 return Ok(response);
             return BadRequest(response);
-
         }
-
     }
 }

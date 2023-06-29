@@ -5,11 +5,10 @@ namespace Domain.Enitity
 {
     public class User
     {
-
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-
         public Role Role { get; set; }
     }
 
@@ -18,6 +17,7 @@ namespace Domain.Enitity
         [Required]
         [MinLength(3)]
         public string Login { get; set; }
+
         [Required]
         [MinLength(8)]
         public string Password { get; set; }
@@ -26,4 +26,3 @@ namespace Domain.Enitity
         public Role Role { get; set; }
     }
 }
-

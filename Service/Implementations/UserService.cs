@@ -8,16 +8,14 @@ namespace Service.Implementations
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-
-
         public async Task<bool> Create(UserViewModel user)
         {
-
             if (user.Role != 0)
             {
                 var User = new User()
@@ -33,27 +31,16 @@ namespace Service.Implementations
             {
                 return false;
             }
-
-
         }
-
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-
             var users = await _userRepository.Select();
-
             return users;
-
-
-
-
-
         }
 
         public async Task<bool> DeleteById(int id)
         {
-
             if (id != 0)
             {
                 var model = await _userRepository.GetById(id);
@@ -61,40 +48,25 @@ namespace Service.Implementations
                 return true;
             }
             return false;
-
-
         }
-
-
 
         public async Task<bool> UpdateById(int id, UserViewModel user)
         {
-
             if (id != 0)
             {
                 var model = await _userRepository.GetById(id);
-
                 model.Login = user.Login;
                 model.Password = user.Password;
                 await _userRepository.Update(model);
                 return true;
-
-
-
             }
             return false;
-
-
         }
 
         public async Task<User> GetById(int id)
         {
-
             User user = await _userRepository.GetById(id);
             return user;
         }
-
-
     }
 }
-

@@ -21,19 +21,22 @@ namespace Api.Exceptions
             }
             catch (Exception ex)
             {
-                
-                await HandleExceptionMessageAsync(context, ex, HttpStatusCode.InternalServerError).ConfigureAwait(false);
+                await HandleExceptionMessageAsync(context, ex, HttpStatusCode.InternalServerError)
+                    .ConfigureAwait(false);
             }
         }
-        private static Task HandleExceptionMessageAsync(HttpContext context, Exception exception, HttpStatusCode httpStatusCode)
+
+        private static Task HandleExceptionMessageAsync(
+            HttpContext context,
+            Exception exception,
+            HttpStatusCode httpStatusCode
+        )
         {
             context.Response.ContentType = "application/json";
             int statusCode = (int)httpStatusCode;
-            var result = JsonConvert.SerializeObject(new
-            {
-                StatusCode = statusCode,
-                ErrorMessage = exception.Message
-            });
+            var result = JsonConvert.SerializeObject(
+                new { StatusCode = statusCode, ErrorMessage = exception.Message }
+            );
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = statusCode;
             return context.Response.WriteAsync(result);

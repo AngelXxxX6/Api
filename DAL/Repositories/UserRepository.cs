@@ -1,5 +1,4 @@
-﻿
-using DAL.Interfaces;
+﻿using DAL.Interfaces;
 using Domain.Enitity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,12 +6,13 @@ namespace DAL.Repositories
 {
     public class UserRepository : IUserRepository
     {
-
         private readonly ApplicationContext _context;
+
         public UserRepository(ApplicationContext context)
         {
             _context = context;
         }
+
         public async Task<bool> Create(User entity)
         {
             await _context.Users.AddAsync(entity);

@@ -23,8 +23,7 @@ namespace Api.Controllers
         public async Task<IActionResult> GetPatients()
         {
             var response = await _service.GetPatients();
-           return Ok(response);
-
+            return Ok(response);
         }
 
         [HttpGet]
@@ -38,11 +37,10 @@ namespace Api.Controllers
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, MainDoctor, Worker")]
-
         public async Task<IActionResult> DeleteById(int id)
         {
             var response = await _service.DeleteById(id);
-            if(response)
+            if (response)
                 return Ok(response);
             return BadRequest(response);
         }

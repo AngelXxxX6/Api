@@ -23,7 +23,6 @@ namespace Api.Controllers
         {
             var response = await _service.GetTickets();
             return Ok(response);
-
         }
 
         [HttpDelete]
