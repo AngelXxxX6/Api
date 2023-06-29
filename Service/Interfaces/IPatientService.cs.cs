@@ -5,11 +5,11 @@ namespace Service.Interfaces
 {
     public interface IPatientService
     {
-        Task<IEnumerable<Patient>> GetPatients();
-        Task<Patient> GetPatientById(int id);
-        Task<bool> Create(PatientViewModel patient);
-        Task<bool> DeleteById(int id);
+        Task<IEnumerable<Patient>> GetPatientsAsync();
+        Task<Patient> GetPatientByIdAsync(int id);
+        Task<bool> CreateAsync(PatientViewModel patient);
+        Task<bool> DeleteByIdAsync(int id);
 
-        Task<bool> UpdateById(int id, PatientViewModel patient);
+        Task<bool> UpdateByIdAsync(int id, PatientViewModel patient);
     }
 }

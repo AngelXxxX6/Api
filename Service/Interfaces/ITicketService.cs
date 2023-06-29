@@ -5,10 +5,10 @@ namespace Service.Interfaces
 {
     public interface ITicketService
     {
-        Task<IEnumerable<Ticket>> GetTickets();
-        Task<bool> Create(TicketViewModel ticket);
-        Task<bool> DeleteById(int id);
-        Task<Ticket> GetById(int id);
-        Task<bool> UpdateById(int id, TicketViewModel ticket);
+        Task<IEnumerable<Ticket>> GetTicketsAsync();
+        Task<bool> CreateAsync(TicketViewModel ticket);
+        Task<bool> DeleteByIdAsync(int id);
+        Task<Ticket> GetByIdAsync(int id);
+        Task<bool> UpdateByIdAsync(int id, TicketViewModel ticket);
     }
 }

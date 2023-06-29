@@ -15,13 +15,13 @@ namespace Service.Implementations
             _patientRepository = patientRepository;
         }
 
-        public async Task<IEnumerable<Patient>> GetPatients()
+        public async Task<IEnumerable<Patient>> GetPatientsAsync()
         {
             var patients = await _patientRepository.Select();
             return patients;
         }
 
-        public async Task<bool> Create(PatientViewModel patient)
+        public async Task<bool> CreateAsync(PatientViewModel patient)
         {
             var Patient = new Patient()
             {
@@ -34,14 +34,14 @@ namespace Service.Implementations
             return true;
         }
 
-        public async Task<bool> DeleteById(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
             var model = await _patientRepository.GetById(id);
             await _patientRepository.Delete(model);
             return true;
         }
 
-        public async Task<bool> UpdateById(int id, PatientViewModel patient)
+        public async Task<bool> UpdateByIdAsync(int id, PatientViewModel patient)
         {
             var baseResponse = new BaseResponse<bool>();
 
@@ -58,7 +58,7 @@ namespace Service.Implementations
             return true;
         }
 
-        public async Task<Patient> GetPatientById(int id)
+        public async Task<Patient> GetPatientByIdAsync(int id)
         {
             var model = await _patientRepository.GetById(id);
             return model;

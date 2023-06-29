@@ -16,13 +16,13 @@ namespace Service.Implementations
             _ticketRepository = ticketRepository;
         }
 
-        public async Task<IEnumerable<Ticket>> GetTickets()
+        public async Task<IEnumerable<Ticket>> GetTicketsAsync()
         {
             var tickets = await _ticketRepository.Select();
             return tickets;
         }
 
-        public async Task<bool> Create(TicketViewModel ticket)
+        public async Task<bool> CreateAsync(TicketViewModel ticket)
         {
             var Ticket = new Ticket()
             {
@@ -36,14 +36,14 @@ namespace Service.Implementations
         }
 
         [HttpPost]
-        public async Task<bool> DeleteById(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
             var model = await _ticketRepository.GetById(id);
             await _ticketRepository.Delete(model);
             return true;
         }
 
-        public async Task<bool> UpdateById(int id, TicketViewModel ticket)
+        public async Task<bool> UpdateByIdAsync(int id, TicketViewModel ticket)
         {
             var model = await _ticketRepository.GetById(id);
 
@@ -54,7 +54,7 @@ namespace Service.Implementations
             return true;
         }
 
-        public async Task<Ticket> GetById(int id)
+        public async Task<Ticket> GetByIdAsync(int id)
         {
             var model = await _ticketRepository.GetById(id);
             return model;

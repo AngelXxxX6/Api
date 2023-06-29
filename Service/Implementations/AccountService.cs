@@ -19,7 +19,7 @@ namespace Service.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<ClaimsIdentity> Login(LoginViewModel model)
+        public async Task<ClaimsIdentity> LoginAsync(LoginViewModel model)
         {
             var user = await _userRepository.GetByLogin(model.Login);
 

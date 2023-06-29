@@ -20,42 +20,42 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> GetDoctors()
+        public async Task<IActionResult> GetDoctorsAsync()
         {
-            var response = await _service.GetDoctors();
+            var response = await _service.GetDoctorsAsync();
             return Ok(response);
         }
 
         [HttpGet]
         [Route("/[controller]/GetDoctor")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> GetDoctor(int id)
+        public async Task<IActionResult> GetDoctorAsync(int id)
         {
-            var response = await _service.GetDoctorById(id);
+            var response = await _service.GetDoctorByIdAsync(id);
             return Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
-        public async Task<IActionResult> DeleteById(int id)
+        public async Task<IActionResult> DeleteByIdAsync(int id)
         {
-            var response = await _service.DeleteById(id);
+            var response = await _service.DeleteByIdAsync(id);
             return Ok(response);
         }
 
         [HttpPut]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
-        public async Task<IActionResult> Create(DoctorViewModel model)
+        public async Task<IActionResult> CreateAsync(DoctorViewModel model)
         {
-            var response = await _service.Create(model);
+            var response = await _service.CreateAsync(model);
             return Ok(response);
         }
 
         [HttpPost]
         [Authorize(Roles = "MainAdmin,MainDoctor")]
-        public async Task<IActionResult> UpdateById(int id, DoctorViewModel model)
+        public async Task<IActionResult> UpdateByIdAsync(int id, DoctorViewModel model)
         {
-            var response = await _service.UpdateById(id, model);
+            var response = await _service.UpdateByIdAsync(id, model);
             return Ok(response);
         }
     }

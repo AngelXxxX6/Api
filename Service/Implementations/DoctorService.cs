@@ -15,13 +15,13 @@ namespace Service.Implementations
             _doctorRepository = doctorRepository;
         }
 
-        public async Task<IEnumerable<Doctor>> GetDoctors()
+        public async Task<IEnumerable<Doctor>> GetDoctorsAsync()
         {
             var doctors = await _doctorRepository.Select();
             return doctors;
         }
 
-        public async Task<bool> Create(DoctorViewModel doctor)
+        public async Task<bool> CreateAsync(DoctorViewModel doctor)
         {
             var Doctor = new Doctor()
             {
@@ -35,14 +35,14 @@ namespace Service.Implementations
             return true;
         }
 
-        public async Task<bool> DeleteById(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
             var model = await _doctorRepository.GetById(id);
             await _doctorRepository.Delete(model);
             return true;
         }
 
-        public async Task<bool> UpdateById(int id, DoctorViewModel doctor)
+        public async Task<bool> UpdateByIdAsync(int id, DoctorViewModel doctor)
         {
             var model = await _doctorRepository.GetById(id);
             model.FIO = doctor.FIO;
@@ -54,7 +54,7 @@ namespace Service.Implementations
             return true;
         }
 
-        public async Task<Doctor> GetDoctorById(int id)
+        public async Task<Doctor> GetDoctorByIdAsync(int id)
         {
             var model = await _doctorRepository.GetById(id);
             return model;

@@ -5,10 +5,10 @@ namespace Service.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetUsers();
-        Task<bool> Create(UserViewModel user);
-        Task<bool> DeleteById(int id);
-        Task<bool> UpdateById(int id, UserViewModel user);
-        Task<User> GetById(int id);
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<bool> CreateAsync(UserViewModel user);
+        Task<bool> DeleteByIdAsync(int id);
+        Task<bool> UpdateByIdAsync(int id, UserViewModel user);
+        Task<User> GetByIdAsync(int id);
     }
 }

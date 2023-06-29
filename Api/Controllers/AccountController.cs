@@ -22,7 +22,7 @@ namespace Api.Controllers
 
         [HttpPut]
         [Authorize(Roles = "MainRegistryWorker,MainAdmin")]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> RegisterAsync(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -35,11 +35,11 @@ namespace Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> LoginAsync(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var response = await _accountService.Login(model);
+                var response = await _accountService.LoginAsync(model);
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(response)
@@ -52,7 +52,7 @@ namespace Api.Controllers
         [Authorize]
         [HttpGet]
         [Route("/[controller]/LogOut")]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> LogoutAsync()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok();

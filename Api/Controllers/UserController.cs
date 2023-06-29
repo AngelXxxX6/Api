@@ -18,17 +18,17 @@ namespace Api.Controllers
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsersAsync()
         {
-            var response = await _userService.GetUsers();
+            var response = await _userService.GetUsersAsync();
             return Ok(response);
         }
 
         [Authorize(Roles = "MainAdmin,MainRegistryWorker")]
         [HttpDelete]
-        public async Task<IActionResult> DeleteById(int id)
+        public async Task<IActionResult> DeleteByIdAsync(int id)
         {
-            var response = await _userService.DeleteById(id);
+            var response = await _userService.DeleteByIdAsync(id);
             if (response)
                 return Ok(response);
             return BadRequest(response);
@@ -36,9 +36,9 @@ namespace Api.Controllers
 
         [Authorize(Roles = "MainAdmin, MainRegistryWorker")]
         [HttpPost]
-        public async Task<IActionResult> UpdateById(int id, UserViewModel model)
+        public async Task<IActionResult> UpdateByIdAsync(int id, UserViewModel model)
         {
-            var response = await _userService.UpdateById(id, model);
+            var response = await _userService.UpdateByIdAsync(id, model);
             if (response)
                 return Ok(response);
             return BadRequest(response);

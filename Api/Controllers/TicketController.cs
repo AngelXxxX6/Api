@@ -19,17 +19,17 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> GetTickets()
+        public async Task<IActionResult> GetTicketsAsync()
         {
-            var response = await _service.GetTickets();
+            var response = await _service.GetTicketsAsync();
             return Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> DeleteById(int id)
+        public async Task<IActionResult> DeleteByIdAsync(int id)
         {
-            var response = await _service.DeleteById(id);
+            var response = await _service.DeleteByIdAsync(id);
             if (response)
                 return Ok(response);
             return BadRequest(response);
@@ -37,9 +37,9 @@ namespace Api.Controllers
 
         [HttpPut]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> Create(TicketViewModel model)
+        public async Task<IActionResult> CreateAsync(TicketViewModel model)
         {
-            var response = await _service.Create(model);
+            var response = await _service.CreateAsync(model);
             if (response)
                 return Ok(response);
             return BadRequest(response);
@@ -47,9 +47,9 @@ namespace Api.Controllers
 
         [HttpPost]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> UpdateById(int id, TicketViewModel model)
+        public async Task<IActionResult> UpdateByIdAsync(int id, TicketViewModel model)
         {
-            var response = await _service.UpdateById(id, model);
+            var response = await _service.UpdateByIdAsync(id, model);
             if (response)
                 return Ok(response);
             return BadRequest(response);

@@ -14,7 +14,7 @@ namespace Service.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<bool> Create(UserViewModel user)
+        public async Task<bool> CreateAsync(UserViewModel user)
         {
             if (user.Role != 0)
             {
@@ -33,13 +33,13 @@ namespace Service.Implementations
             }
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
             var users = await _userRepository.Select();
             return users;
         }
 
-        public async Task<bool> DeleteById(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
             if (id != 0)
             {
@@ -50,7 +50,7 @@ namespace Service.Implementations
             return false;
         }
 
-        public async Task<bool> UpdateById(int id, UserViewModel user)
+        public async Task<bool> UpdateByIdAsync(int id, UserViewModel user)
         {
             if (id != 0)
             {
@@ -63,7 +63,7 @@ namespace Service.Implementations
             return false;
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
             User user = await _userRepository.GetById(id);
             return user;

@@ -20,26 +20,26 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> GetPatients()
+        public async Task<IActionResult> GetPatientsAsync()
         {
-            var response = await _service.GetPatients();
+            var response = await _service.GetPatientsAsync();
             return Ok(response);
         }
 
         [HttpGet]
         [Route("/[controller]/GetById")]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> GetPatientById(int id)
+        public async Task<IActionResult> GetPatientByIdAsync(int id)
         {
-            var response = await _service.GetPatientById(id);
+            var response = await _service.GetPatientByIdAsync(id);
             return Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, MainDoctor, Worker")]
-        public async Task<IActionResult> DeleteById(int id)
+        public async Task<IActionResult> DeleteByIdAsync(int id)
         {
-            var response = await _service.DeleteById(id);
+            var response = await _service.DeleteByIdAsync(id);
             if (response)
                 return Ok(response);
             return BadRequest(response);
@@ -47,9 +47,9 @@ namespace Api.Controllers
 
         [HttpPut]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> Create(PatientViewModel model)
+        public async Task<IActionResult> CreateAsync(PatientViewModel model)
         {
-            var response = await _service.Create(model);
+            var response = await _service.CreateAsync(model);
             if (response)
                 return Ok(response);
             return BadRequest(response);
@@ -57,9 +57,9 @@ namespace Api.Controllers
 
         [HttpPost]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IActionResult> UpdateById(int id, PatientViewModel model)
+        public async Task<IActionResult> UpdateByIdAsync(int id, PatientViewModel model)
         {
-            var response = await _service.UpdateById(id, model);
+            var response = await _service.UpdateByIdAsync(id, model);
             if (response)
                 return Ok(response);
             return BadRequest(response);
