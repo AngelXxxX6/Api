@@ -1,9 +1,7 @@
 ﻿using Domain.Enitity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Serialization;
 using Service.Interfaces;
-using System.Collections;
 
 namespace Api.Controllers
 {

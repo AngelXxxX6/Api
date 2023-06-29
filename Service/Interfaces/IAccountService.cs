@@ -1,5 +1,5 @@
 ﻿using Domain.Enitity.AccountViewsModel;
-using Domain.Response;
+
 using System.Security.Claims;
 
 namespace Service.Interfaces

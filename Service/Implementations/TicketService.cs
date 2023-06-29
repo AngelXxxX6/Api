@@ -1,7 +1,6 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
-using Domain.Enum;
-using Domain.Response;
+
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 

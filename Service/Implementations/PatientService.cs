@@ -1,7 +1,6 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
-using Domain.Enum;
-using Domain.Response;
+
 using Service.Interfaces;
 
 namespace Service.Implementations
@@ -43,7 +42,7 @@ namespace Service.Implementations
 
         public async Task<bool> UpdateByIdAsync(int id, PatientViewModel patient)
         {
-            var baseResponse = new BaseResponse<bool>();
+
 
             var model = await _patientRepository.GetById(id);
             if (model == null)

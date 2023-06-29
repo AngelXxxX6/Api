@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
-using System.Collections;
-using System.Formats.Asn1;
 
 namespace Api.Controllers
 {

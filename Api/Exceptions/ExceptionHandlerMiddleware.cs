@@ -1,5 +1,4 @@
-﻿using Domain.Response;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Net;
 
 namespace Api.Exceptions
@@ -37,7 +36,7 @@ namespace Api.Exceptions
             var result = JsonConvert.SerializeObject(
                 new { StatusCode = statusCode, ErrorMessage = exception.Message }
             );
-            context.Response.ContentType = "application/json";
+
             context.Response.StatusCode = statusCode;
             return context.Response.WriteAsync(result);
         }

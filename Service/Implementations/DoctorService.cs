@@ -1,7 +1,6 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
-using Domain.Enum;
-using Domain.Response;
+
 using Service.Interfaces;
 
 namespace Service.Implementations
@@ -23,6 +22,7 @@ namespace Service.Implementations
 
         public async Task<bool> CreateAsync(DoctorViewModel doctor)
         {
+
             var Doctor = new Doctor()
             {
                 FIO = doctor.FIO,

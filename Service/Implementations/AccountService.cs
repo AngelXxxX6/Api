@@ -1,10 +1,7 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
 using Domain.Enitity.AccountViewsModel;
-using Domain.Enum;
 using Domain.Helpers;
-using Domain.Response;
-using Microsoft.EntityFrameworkCore;
 using Service.Interfaces;
 using System.Security.Claims;
 
@@ -34,21 +31,25 @@ namespace Service.Implementations
         public async Task<bool> Register(RegisterViewModel model)
         {
             var user = await _userRepository.GetByLogin(model.Login);
-            if (user == null)
+            if (model.UserRole != 0)
             {
-                user = new User()
+                if (user == null)
                 {
-                    Login = model.Login,
-                    Role = model.UserRole,
-                    Password = HashPasswordHelper.HashPassword(model.Password),
-                };
-                await _userRepository.Create(user);
+                    user = new User()
+                    {
+                        Login = model.Login,
+                        Role = model.UserRole,
+                        Password = HashPasswordHelper.HashPassword(model.Password),
+                    };
+                    await _userRepository.Create(user);
+                }
+                else
+                {
+                    return false;
+                }
+                return true;
             }
-            else
-            {
-                return false;
-            }
-            return true;
+            return false;
         }
 
         private ClaimsIdentity Authenticate(User user)

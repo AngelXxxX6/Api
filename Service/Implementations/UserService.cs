@@ -1,7 +1,6 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
 using Service.Interfaces;
-using System.Data;
 
 namespace Service.Implementations
 {
