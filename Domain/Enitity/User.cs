@@ -25,4 +25,14 @@ namespace Domain.Enitity
         [Required]
         public Role Role { get; set; }
     }
+    public class UserOutViewModel
+    {
+        public int Id { get; set; }
+        [Required]
+        [MinLength(3)]
+        public string Login { get; set; }
+
+        [Required]
+        public Role Role { get; set; }
+    }
 }
