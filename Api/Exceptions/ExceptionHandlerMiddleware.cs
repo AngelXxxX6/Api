@@ -20,8 +20,7 @@ namespace Api.Exceptions
             }
             catch (Exception ex)
             {
-                await HandleExceptionMessageAsync(context, ex, HttpStatusCode.InternalServerError)
-                    .ConfigureAwait(false);
+                await HandleExceptionMessageAsync(context, ex, HttpStatusCode.InternalServerError);
             }
         }
 
