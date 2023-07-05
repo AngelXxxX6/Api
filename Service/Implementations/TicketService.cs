@@ -58,5 +58,17 @@ namespace Service.Implementations
             var model = await _ticketRepository.GetById(id);
             return model;
         }
+
+        public async Task<Ticket> GetByPatientFIOAsync(string FIO)
+        {
+            var model = await _ticketRepository.GetByPatientFIO(FIO);
+            return model;
+        }
+
+        public async Task<Ticket> GetByDoctorFIOAsync(string FIO)
+        {
+            var model = await _ticketRepository.GetByDoctorFIO(FIO);
+            return model;
+        }
     }
 }

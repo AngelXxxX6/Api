@@ -32,6 +32,11 @@ namespace DAL.Repositories
             return await _context.Doctors.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<Doctor> GetByFIO(string FIO)
+        {
+            return await _context.Doctors.FirstOrDefaultAsync(x => x.FIO == FIO);
+        }
+
         public async Task<IEnumerable<Doctor>> Select()
         {
             return await _context.Doctors.ToListAsync();

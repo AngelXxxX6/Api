@@ -59,5 +59,11 @@ namespace Service.Implementations
             var model = await _doctorRepository.GetById(id);
             return model;
         }
+
+        public async Task<Doctor> GetDoctorByFIOAsync(string FIO)
+        {
+            var model = await _doctorRepository.GetByFIO(FIO);
+            return model;
+        }
     }
 }

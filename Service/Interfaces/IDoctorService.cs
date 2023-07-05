@@ -10,6 +10,7 @@ namespace Service.Interfaces
         Task<Doctor> GetDoctorByIdAsync(int id);
 
         Task<bool> DeleteByIdAsync(int id);
+        Task<Doctor> GetDoctorByFIOAsync(string FIO);
         Task<bool> UpdateByIdAsync(int id, DoctorViewModel doctor);
     }
 }

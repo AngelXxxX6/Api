@@ -53,5 +53,23 @@ namespace Api.Controllers
                 return Ok(response);
             return BadRequest(response);
         }
+
+        [HttpGet]
+        [Route("/[controller]/GetTicketByPatientFIO")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<IActionResult> GetByPatientFIOAsync(string FIO)
+        {
+            var response = await _service.GetByPatientFIOAsync(FIO);
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("/[controller]/GetTicketByDoctorFIO")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<IActionResult> GetByDoctorFIOAsync(string FIO)
+        {
+            var response = await _service.GetByDoctorFIOAsync(FIO);
+            return Ok(response);
+        }
     }
 }

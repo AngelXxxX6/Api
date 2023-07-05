@@ -33,6 +33,15 @@ namespace Api.Controllers
             return Ok(response);
         }
 
+        [HttpGet]
+        [Route("/[controller]/GetDoctorByFIO")]
+        [Authorize(Roles = "MainAdmin, MainDoctor")]
+        public async Task<IActionResult> GetDoctorByFIOAsync(string FIO)
+        {
+            var response = await _service.GetDoctorByFIOAsync(FIO);
+            return Ok(response);
+        }
+
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, MainDoctor")]
         public async Task<IActionResult> DeleteByIdAsync(int id)
