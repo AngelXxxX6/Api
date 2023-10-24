@@ -27,16 +27,6 @@ namespace DAL.Repositories
             return true;
         }
 
-        public async Task<Patient> GetById(int id)
-        {
-            return await _context.Patients.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task<Patient> GetByFIO(string FIO)
-        {
-            return await _context.Patients.FirstOrDefaultAsync(x => x.FIO == FIO);
-        }
-
         public async Task<IEnumerable<Patient>> Select()
         {
             return await _context.Patients.ToListAsync();

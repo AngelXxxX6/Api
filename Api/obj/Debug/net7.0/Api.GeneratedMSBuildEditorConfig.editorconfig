@@ -9,9 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Api
 build_property.RootNamespace = Api
-build_property.ProjectDir = D:\Git_Rep\Api\Api\
+build_property.ProjectDir = C:\Users\New\Desktop\Api\Api\Api\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Git_Rep\Api\Api
+build_property.MSBuildProjectDirectory = C:\Users\New\Desktop\Api\Api\Api
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/New/Desktop/Api/Api/Api/Views/Account/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

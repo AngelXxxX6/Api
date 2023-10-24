@@ -6,7 +6,7 @@ namespace Service.Interfaces
 {
     public interface IAccountService
     {
-        Task<bool> Register(RegisterViewModel model);
+        Task<bool> RegisterAsync(RegisterViewModel model);
         Task<ClaimsIdentity> LoginAsync(LoginViewModel model);
     }
 }

@@ -7,9 +7,9 @@ namespace Service.Implementations
 {
     public class PatientService : IPatientService
     {
-        private readonly IPatientRepository _patientRepository;
+        private readonly IAppointmentRepository _patientRepository;
 
-        public PatientService(IPatientRepository patientRepository)
+        public PatientService(IAppointmentRepository patientRepository)
         {
             _patientRepository = patientRepository;
         }

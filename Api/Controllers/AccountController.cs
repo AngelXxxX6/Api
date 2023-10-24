@@ -8,9 +8,8 @@ using System.Security.Claims;
 
 namespace Api.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class AccountController : ControllerBase
+    
+    public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
 
@@ -25,7 +24,7 @@ namespace Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _accountService.Register(model);
+                var response = await _accountService.RegisterAsync(model);
                 return Ok(response);
             }
             else
@@ -56,5 +55,10 @@ namespace Api.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok();
         }
+
+        public IActionResult Home()
+        {
+            return View();
+        } 
     }
 }

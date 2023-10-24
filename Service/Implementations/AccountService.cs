@@ -20,7 +20,7 @@ namespace Service.Implementations
         {
             var user = await _userRepository.GetByLogin(model.Login);
 
-            if (user.Password != HashPasswordHelper.HashPassword(model.Password))
+            if (user.password != HashPasswordHelper.HashPassword(model.Password))
             {
                 return new ClaimsIdentity();
             }
@@ -28,7 +28,7 @@ namespace Service.Implementations
             return result;
         }
 
-        public async Task<bool> Register(RegisterViewModel model)
+        public async Task<bool> RegisterAsync(RegisterViewModel model)
         {
             var user = await _userRepository.GetByLogin(model.Login);
             if (model.UserRole != 0)
@@ -37,9 +37,9 @@ namespace Service.Implementations
                 {
                     user = new User()
                     {
-                        Login = model.Login,
-                        Role = model.UserRole,
-                        Password = HashPasswordHelper.HashPassword(model.Password),
+                        username = model.Login,
+                        role = model.UserRole,
+                        password = HashPasswordHelper.HashPassword(model.Password),
                     };
                     await _userRepository.Create(user);
                 }
@@ -56,8 +56,8 @@ namespace Service.Implementations
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.username),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.role.ToString())
             };
             return new ClaimsIdentity(
                 claims,
