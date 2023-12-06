@@ -1,13 +1,14 @@
 ﻿using Domain.Enitity;
-using Domain.Response;
 
 namespace Service.Interfaces
 {
     public interface IPatientService
     {
-        Task<IBaseResponse<IEnumerable<Patient>>> GetPatients();
-        Task<IBaseResponse<bool>> Create(PatientViewModel patient);
-        Task<IBaseResponse<bool>> DeleteById(int id);
-        Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient);
+        Task<IEnumerable<Patient>> GetPatientsAsync();
+        Task<Patient> GetPatientByIdAsync(int id);
+        Task<bool> CreateAsync(PatientViewModel patient);
+        Task<bool> DeleteByIdAsync(int id);
+
+        Task<bool> UpdateByIdAsync(int id, PatientViewModel patient);
     }
 }

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
-using System.Collections;
 
 namespace Api.Controllers
 {
@@ -19,51 +18,58 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<IEnumerable> GetTickets()
+        public async Task<IActionResult> GetTicketsAsync()
         {
-            var response = await _service.GetTickets();
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return response.Data;
-            }
-            return "bad";
-
+            var response = await _service.GetTicketsAsync();
+            return Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<bool> DeleteById(int id)
+        public async Task<IActionResult> DeleteByIdAsync(int id)
         {
-            var response = await _service.DeleteById(id);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            var response = await _service.DeleteByIdAsync(id);
+            if (response)
+                return Ok(response);
+            return BadRequest(response);
         }
 
         [HttpPut]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<bool> Create(TicketViewModel model)
+        public async Task<IActionResult> CreateAsync(TicketViewModel model)
         {
-            var response = await _service.Create(model);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return false;
+            var response = await _service.CreateAsync(model);
+            if (response)
+                return Ok(response);
+            return BadRequest(response);
         }
 
         [HttpPost]
         [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
-        public async Task<bool> UpdateById(int id, TicketViewModel model)
+        public async Task<IActionResult> UpdateByIdAsync(int id, TicketViewModel model)
         {
-            var response = await _service.UpdateById(id, model);
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
-            {
-                return true;
-            }
-            return true;
+            var response = await _service.UpdateByIdAsync(id, model);
+            if (response)
+                return Ok(response);
+            return BadRequest(response);
+        }
+
+        [HttpGet]
+        [Route("/[controller]/GetTicketByPatientFIO")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<IActionResult> GetByPatientFIOAsync(string FIO)
+        {
+            var response = await _service.GetByPatientFIOAsync(FIO);
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("/[controller]/GetTicketByDoctorFIO")]
+        [Authorize(Roles = "MainAdmin, Worker, MainDoctor")]
+        public async Task<IActionResult> GetByDoctorFIOAsync(string FIO)
+        {
+            var response = await _service.GetByDoctorFIOAsync(FIO);
+            return Ok(response);
         }
     }
 }

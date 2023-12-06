@@ -1,137 +1,66 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
-using Domain.Enum;
-using Domain.Response;
+
 using Service.Interfaces;
 
 namespace Service.Implementations
 {
     public class PatientService : IPatientService
     {
-        private readonly IPatientRepository _patientRepository;
-        public PatientService(IPatientRepository patientRepository)
+        private readonly IAppointmentRepository _patientRepository;
+
+        public PatientService(IAppointmentRepository patientRepository)
         {
             _patientRepository = patientRepository;
         }
 
-
-        public async Task<IBaseResponse<IEnumerable<Patient>>> GetPatients()
+        public async Task<IEnumerable<Patient>> GetPatientsAsync()
         {
-            var baseResponse = new BaseResponse<IEnumerable<Patient>>();
-            try
-            {
-                var patients = _patientRepository.Select().ToList();
-                if (patients.Count() == 0)
-                {
-                    baseResponse.Description = "Найдено 0 пациентов";
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-
-                baseResponse.Data = patients;
-                baseResponse.StatusCode = StatusCode.OK;
-                return baseResponse;
-
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<IEnumerable<Patient>>()
-                {
-                    Description = $"[GetPatients] : {ex.Message}"
-                };
-            }
+            var patients = await _patientRepository.Select();
+            return patients;
         }
 
-        public async Task<IBaseResponse<bool>> Create(PatientViewModel patient)
+        public async Task<bool> CreateAsync(PatientViewModel patient)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
+            var Patient = new Patient()
             {
-                var Patient = new Patient()
-                {
-                    FIO = patient.FIO,
-                    Adress = patient.Adress,
-                    Phone = patient.Phone,
-                    DateBirthday = patient.DateBirthday,
-                };
-                await _patientRepository.Create(Patient);
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[Create] : {ex.Message}"
-                };
-            }
-            return baseResponse;
+                FIO = patient.FIO,
+                Adress = patient.Adress,
+                Phone = patient.Phone,
+                DateBirthday = patient.DateBirthday,
+            };
+            await _patientRepository.Create(Patient);
+            return true;
         }
 
-        public async Task<IBaseResponse<bool>> DeleteById(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-                if (await _patientRepository.Delete(model))
-                {
-                    baseResponse.Data = true;
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-                else
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = $"[DeleteById] : {StatusCode.UserNotFound}"
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[DeleteById] : {ex.Message}"
-                };
-            }
+            var model = await _patientRepository.GetById(id);
+            await _patientRepository.Delete(model);
+            return true;
         }
 
-        public async Task<IBaseResponse<bool>> UpdateById(int id, PatientViewModel patient)
+        public async Task<bool> UpdateByIdAsync(int id, PatientViewModel patient)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                var model = _patientRepository.Select().Where(x => x.Id == id).FirstOrDefault();
 
-                if (model == null)
-                {
-                    baseResponse.Data = false;
-                    baseResponse.StatusCode = StatusCode.UserNotFound;
-                    return baseResponse;
-                }
-                model.FIO = patient.FIO;
-                model.Adress = patient.Adress;
-                model.Phone = patient.Phone;
-                model.DateBirthday = patient.DateBirthday;
-                if (await _patientRepository.Update(model))
-                {
-                    baseResponse.StatusCode = StatusCode.OK;
-                    baseResponse.Data = true;
-                    return baseResponse;
-                }
-                else
-                {
-                    baseResponse.Data = false;
-                    baseResponse.StatusCode = StatusCode.InternalServerError;
-                    return baseResponse;
-                }
-            }
-            catch (Exception ex)
+
+            var model = await _patientRepository.GetById(id);
+            if (model == null)
             {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[UpdateById] : {ex.Message}"
-                };
+                return false;
             }
+            model.FIO = patient.FIO;
+            model.Adress = patient.Adress;
+            model.Phone = patient.Phone;
+            model.DateBirthday = patient.DateBirthday;
+            await _patientRepository.Update(model);
+            return true;
+        }
+
+        public async Task<Patient> GetPatientByIdAsync(int id)
+        {
+            var model = await _patientRepository.GetById(id);
+            return model;
         }
     }
 }

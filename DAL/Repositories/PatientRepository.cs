@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -26,9 +27,9 @@ namespace DAL.Repositories
             return true;
         }
 
-        public IQueryable<Patient> Select()
+        public async Task<IEnumerable<Patient>> Select()
         {
-            return _context.Patients;
+            return await _context.Patients.ToListAsync();
         }
 
         public async Task<bool> Update(Patient entity)

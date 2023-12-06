@@ -1,17 +1,18 @@
-﻿
-using DAL.Interfaces;
+﻿using DAL.Interfaces;
 using Domain.Enitity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
     public class UserRepository : IUserRepository
     {
-
         private readonly ApplicationContext _context;
+
         public UserRepository(ApplicationContext context)
         {
             _context = context;
         }
+
         public async Task<bool> Create(User entity)
         {
             await _context.Users.AddAsync(entity);
@@ -26,10 +27,19 @@ namespace DAL.Repositories
             return true;
         }
 
-
-        public IQueryable<User> Select()
+        public async Task<User> GetById(int id)
         {
-            return _context.Users;
+            return await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<User> GetByLogin(string login)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.Login == login);
+        }
+
+        public async Task<IEnumerable<User>> Select()
+        {
+            return await _context.Users.ToListAsync();
         }
 
         public async Task<bool> Update(User entity)

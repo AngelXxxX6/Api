@@ -15,12 +15,13 @@ namespace Api
             services.AddScoped<IDoctorService, DoctorService>();
             services.AddScoped<ITicketService, TicketService>();
         }
+
         public static void InititalizationRepostitories(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IPatientRepository, PatientRepository>();
+            services.AddScoped<IAppointmentRepository, PatientRepository>();
             services.AddScoped<IDoctorRepository, DoctorRepository>();
-            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<IPatientRepository, TicketRepository>();
         }
     }
 }

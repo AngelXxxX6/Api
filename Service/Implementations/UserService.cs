@@ -1,207 +1,71 @@
 ﻿using DAL.Interfaces;
 using Domain.Enitity;
-using Domain.Enum;
-using Domain.Response;
 using Service.Interfaces;
-using System.Data;
 
 namespace Service.Implementations
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-
-
-        public async Task<IBaseResponse<bool>> Create(UserViewModel user)
+        public async Task<bool> CreateAsync(UserViewModel user)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
+            if (user.Role != 0)
             {
-                if (user.Role != 0)
+                var User = new User()
                 {
-                    var User = new User()
-                    {
-                        Login = user.Login,
-                        Password = user.Password,
-                        Role = user.Role,
-                    };
-                    await _userRepository.Create(User);
-                }
-                else
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = "Недостаточно прав",
-                        Data = false
-                    };
-                }
-
-            }
-
-
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[GetUsers] : {ex.Message}",
-                    StatusCode = StatusCode.InternalServerError,
+                    Login = user.Login,
+                    Password = user.Password,
+                    Role = user.Role,
                 };
-
+                await _userRepository.Create(User);
+                return true;
             }
-            return baseResponse;
-
-        }
-
-
-        public async Task<IBaseResponse<List<User>>> GetUsers()
-        {
-            var baseResponse = new BaseResponse<List<User>>();
-            try
+            else
             {
-                var users = _userRepository.Select().ToList();
-
-                if (!users.Any())
-                {
-                    baseResponse.Description = "Найдено 0 пользователей";
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-
-                baseResponse.Data = users;
-                baseResponse.StatusCode = StatusCode.OK;
-                return baseResponse;
-
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<List<User>>()
-                {
-                    Description = $"[GetUsers] : {ex.Message}"
-                };
+                return false;
             }
         }
 
-        public async Task<IBaseResponse<bool>> DeleteById(int id)
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
-            {
-                if (id != 0)
-                {
-                    var model = _userRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-                    if (await _userRepository.Delete(model))
-                    {
-                        baseResponse.Data = true;
-                        baseResponse.StatusCode = StatusCode.OK;
-                        return baseResponse;
-                    }
-                    return new BaseResponse<bool>()
-                    {
-                        Description = $"[DeleteById] : {StatusCode.UserNotFound}"
-                    };
-                }
-                else
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = "Недостаточно прав",
-                        Data = false
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[DeleteById] : {StatusCode.InternalServerError}",
-                    Data = false,
-                };
-            }
+            var users = await _userRepository.Select();
+            return users;
         }
 
-
-
-        public async Task<IBaseResponse<bool>> UpdateById(int id, UserViewModel user)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
-            var baseResponse = new BaseResponse<bool>();
-            try
+            if (id != 0)
             {
-                if (id != 0)
-                {
-                    var model = _userRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-                    if (model == null)
-                    {
-                        baseResponse.Data = false;
-                        baseResponse.StatusCode = StatusCode.UserNotFound;
-                        return baseResponse;
-                    }
-                    model.Login = user.Login;
-                    model.Password = user.Password;
-                    if (await _userRepository.Update(model))
-                    {
-                        baseResponse.StatusCode = StatusCode.OK;
-                        baseResponse.Data = true;
-                        return baseResponse;
-                    }
-                    else
-                    {
-                        baseResponse.Data = false;
-                        baseResponse.StatusCode = StatusCode.InternalServerError;
-                        return baseResponse;
-                    }
-                }
-                else
-                {
-                    return new BaseResponse<bool>()
-                    {
-                        Description = "Недостаточно прав",
-                        Data = false
-                    };
-                }
+                var model = await _userRepository.GetById(id);
+                await _userRepository.Delete(model);
+                return true;
             }
-            catch (Exception ex)
-            {
-                return new BaseResponse<bool>()
-                {
-                    Description = $"[UpdateById] : {ex.Message}"
-                };
-            }
+            return false;
         }
 
-        public async Task<IBaseResponse<User>> GetById(int id)
+        public async Task<bool> UpdateByIdAsync(int id, UserViewModel user)
         {
-            var baseResponse = new BaseResponse<User>();
-            try
+            if (id != 0)
             {
-
-                User user = _userRepository.Select().Where(x => x.Id == id).FirstOrDefault();
-                if (user != null)
-                {
-                    baseResponse.Data = user;
-                    baseResponse.StatusCode = StatusCode.OK;
-                    return baseResponse;
-                }
-                else
-                {
-
-                    baseResponse.StatusCode = StatusCode.UserNotFound;
-                    return baseResponse;
-                }
+                var model = await _userRepository.GetById(id);
+                model.Login = user.Login;
+                model.Password = user.Password;
+                await _userRepository.Update(model);
+                return true;
             }
-            catch (Exception ex)
-            {
+            return false;
+        }
 
-                return new BaseResponse<User>()
-                {
-                    Description = $"[UpdateById] : {ex.Message}"
-                };
-            }
+        public async Task<User> GetByIdAsync(int id)
+        {
+            User user = await _userRepository.GetById(id);
+            return user;
         }
     }
 }
-

@@ -10,3 +10,15 @@ C:\Users\New\Desktop\Api\Api\Domain\obj\Debug\net7.0\Domain.dll
 C:\Users\New\Desktop\Api\Api\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Users\New\Desktop\Api\Api\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Users\New\Desktop\Api\Api\Domain\obj\Debug\net7.0\ref\Domain.dll
+D:\Git_Rep\Api\Domain\bin\Debug\net7.0\Domain.deps.json
+D:\Git_Rep\Api\Domain\bin\Debug\net7.0\Domain.dll
+D:\Git_Rep\Api\Domain\bin\Debug\net7.0\Domain.pdb
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.dll
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\refint\Domain.dll
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\Domain.pdb
+D:\Git_Rep\Api\Domain\obj\Debug\net7.0\ref\Domain.dll

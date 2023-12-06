@@ -5,12 +5,11 @@ namespace Domain.Enitity
 {
     public class User
     {
-
-        [Key] public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-
-        public Role Role { get; set; }
+        [Key]
+        public int user_id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public Role role { get; set; }
     }
 
     public class UserViewModel
@@ -18,6 +17,7 @@ namespace Domain.Enitity
         [Required]
         [MinLength(3)]
         public string Login { get; set; }
+
         [Required]
         [MinLength(8)]
         public string Password { get; set; }
@@ -25,5 +25,14 @@ namespace Domain.Enitity
         [Required]
         public Role Role { get; set; }
     }
-}
+    public class UserOutViewModel
+    {
+        public int Id { get; set; }
+        [Required]
+        [MinLength(3)]
+        public string Login { get; set; }
 
+        [Required]
+        public Role Role { get; set; }
+    }
+}

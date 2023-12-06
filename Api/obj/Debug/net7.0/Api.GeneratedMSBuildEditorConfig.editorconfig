@@ -15,3 +15,7 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\New\Desktop\Api\Api\Api
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/New/Desktop/Api/Api/Api/Views/Account/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
